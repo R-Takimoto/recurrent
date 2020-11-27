@@ -1,12 +1,13 @@
 package test;
 
-import model.Product;
+import dao.MenurDAO;
 
 public class Main {
 
 	public static void main(String[] args) {
-		Product pro = new Product();
+		MenurDAO menu = new MenurDAO();
 
+		menu.findAll();
 
 	}
 
