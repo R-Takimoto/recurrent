@@ -7,7 +7,9 @@ public class Slips {
 	private ArrayList<Slip> slips;
 
 	//コンストラクタ
-	public Slips() {}
+	public Slips() {
+		this.slips = new ArrayList<Slip>();
+	}
 
 	//ゲッター・セッター
 	public ArrayList<Slip> getSlips() {

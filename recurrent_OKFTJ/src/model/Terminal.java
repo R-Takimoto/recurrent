@@ -2,28 +2,20 @@ package model;
 
 public class Terminal {
 	//フィールド
-	int orderID;
-	String storeSeatID;
+	int orderId;
 
 	//コンストラクタ
 	public Terminal() {};
-	public Terminal(String storeSeatID) {
-		this.storeSeatID = storeSeatID;
+	public Terminal(int orderId) {
+		this.orderId = orderId;
 	}
 
 	//ゲッター・セッター
-	public int getOrderID() {
-		return orderID;
+	public int getOrderId() {
+		return orderId;
 	}
-	public void setOrderID(int orderID) {
-		this.orderID = orderID;
+	public void setOrderId(int orderId) {
+		this.orderId = orderId;
 	}
-	public String getStoreSeatID() {
-		return storeSeatID;
-	}
-	public void setStoreSeatID(String storeSeatID) {
-		this.storeSeatID = storeSeatID;
-	};
-
 
 }
