@@ -1,0 +1,18 @@
+@charset "utf-8";
+
+body{
+	background-color: #red;
+}
+h1{
+	color: brown;
+	font-family: "Hannari";
+}
+img {
+  width: 250px;
+  height: 250px;
+  object-fit: cover; /* この一行を追加するだけ！ */
+}
+
+.main{
+	background-color: #c7faff;
+}
