@@ -11,11 +11,11 @@
     <div class="row">
 <jsp:include page="/WEB-INF/jsp/menuTab.jsp" />
  <jsp:include page="/WEB-INF/jsp/menuButton.jsp" />
-  <div class="col-sm-10">
-会計は○○○になります。
+  <div class="col-sm-10 main">
+<h3><p class="text-sm-center">会計は○○○になります。</p></h3>
 
 
-<a href="/recurrent/WelcomeServlet?hoge=foo">終了</a>
+<a href="/recurrent/WelcomeServlet?hoge=foo"><p class="text-sm-center">終了</p></a>
 
  </div>
     </div>

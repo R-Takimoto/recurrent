@@ -13,10 +13,10 @@
     <div class="row">
 <jsp:include page="/WEB-INF/jsp/menuTab.jsp" />
  <jsp:include page="/WEB-INF/jsp/menuButton.jsp" />
-  <div class="col-sm-10">
+  <div class="col-sm-10 main">
 <!-- カロリー絞り込み画面 -->
 <c:if test="${action=='calorieSelect'}">
-	<h1>カロリーを設定してメニューを絞り込みます</h1>
+	<h2>カロリーを設定してメニューを絞り込みます</h2>
 	<p>ご希望のカロリーを選択してください</p>
 	<form action="/recurrent/WelcomeServlet" method="post">
 	<div>

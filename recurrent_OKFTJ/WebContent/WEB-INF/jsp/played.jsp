@@ -11,12 +11,12 @@
     <div class="row">
 <jsp:include page="/WEB-INF/jsp/menuTab.jsp" />
  <jsp:include page="/WEB-INF/jsp/menuButton.jsp" />
-  <div class="col-sm-10">
+  <div class="col-sm-10 main">
 
-<a href="/recurrent/PlayServlet?action=gatya">もう１回ガチャる！！</a>
+<a href="/recurrent/PlayServlet?action=gatya"><p class="text-sm-center">もう１回ガチャる！！</p></a>
 
 <form action="/recurrent/CartServlet" method="post">
-<input type="submit" value="カートに入れる" />
+<input type="submit" value="カートに入れる" class="button"/>
 </form>
  </div>
     </div>
