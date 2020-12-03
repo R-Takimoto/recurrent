@@ -1,12 +1,12 @@
 package bo;
 
-import dao.OrderIdDAO;
+import dao.WelcomeDAO;
 import model.Terminal;
 
 public class WelcomeLogic {
 
-	public boolean login(Terminal terminal) {
-		OrderIdDAO dao = new OrderIdDAO();
+	public boolean execute(Terminal terminal) {
+		WelcomeDAO dao = new WelcomeDAO();
 
 		boolean judge = dao.login(terminal);
 

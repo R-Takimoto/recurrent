@@ -8,7 +8,6 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 import bo.EnergyLogic;
 import model.Energy;
@@ -58,8 +57,8 @@ public class EnergyServlet extends HttpServlet {
 			EnergyLogic energyL = new EnergyLogic();
 			energyL.execute(energy);
 
-			HttpSession session = request.getSession();
-			session.setAttribute("energy", energy);
+
+			request.setAttribute("energy", energy);
 		}
 
 
