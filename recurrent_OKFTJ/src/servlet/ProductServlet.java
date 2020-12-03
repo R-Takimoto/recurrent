@@ -16,6 +16,12 @@ public class ProductServlet extends HttpServlet {
 
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		request.setCharacterEncoding("utf-8");
+		//
+		{
+			String typeCode = request.getParameter("typeCode");
+
+		}
 		RequestDispatcher dispatcher=request.getRequestDispatcher("/WEB-INF/jsp/product.jsp");
 		dispatcher.forward(request, response);
 	}

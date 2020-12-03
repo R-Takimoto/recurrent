@@ -2,11 +2,12 @@ package bo;
 
 import dao.OrderDAO;
 import model.Orders;
+import model.Terminal;
 
 public class OrderLogic {
 
-	public void newOrder(Orders orders) {
+	public void execute(Orders orders, Terminal terminal) {
 		OrderDAO dao = new OrderDAO();
-		dao.registerOreder(orders);
+		dao.registerOreder(orders, terminal);
 	}
 }

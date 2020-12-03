@@ -1,8 +1,8 @@
 package test;
 
 import bo.OrderLogic;
-import model.Order;
 import model.Orders;
+import model.Terminal;
 
 public class OrderTest {
 
@@ -19,26 +19,23 @@ public class OrderTest {
 
 //		System.out.println(now);
 		String typeCode = "a-001";
-		int orderId = 50;
-		int orderbranch = 1;
 		int quantity = 1;
 		int ordertypeId = 1;
-		Order order = new Order(typeCode, orderId, orderbranch, quantity, ordertypeId);
+//		Order order = new Order(typeCode, quantity, ordertypeId);
 
-		String typeCode2 = "a-001";
-		int orderId2 = 50;
-		int orderbranch2 = 1;
+		String typeCode2 = "d-001";
 		int quantity2 = 1;
 		int ordertypeId2 = 1;
-		Order order2 = new Order(typeCode2, orderId2, orderbranch2, quantity2, ordertypeId2);
+//		Order order2 = new Order(typeCode2, quantity2, ordertypeId2);
 
 		Orders orders = new Orders();
 
-		orders.getOrders().add(order);
-		orders.getOrders().add(order2);
+//		orders.getOrders().add(order);
+//		orders.getOrders().add(order2);
 
 		OrderLogic lo = new OrderLogic();
-		lo.newOrder(orders);
+		Terminal terminal = new Terminal(77);
+		lo.execute(orders, terminal);
 	}
 
 }

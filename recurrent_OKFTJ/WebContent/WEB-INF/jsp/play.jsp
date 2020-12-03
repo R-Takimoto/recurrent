@@ -12,8 +12,7 @@
 			<jsp:include page="/WEB-INF/jsp/menuTab.jsp" />
 			<jsp:include page="/WEB-INF/jsp/menuButton.jsp" />
 			<div class="col-sm-10 main">
-
-
+        １回８００円！！キャンセル可能！！
 				<h3>
 					<p class="text-sm-center">わくわくガチャ</p>
 				</h3>
@@ -29,5 +28,6 @@
 	</div>
 	<jsp:include page="/WEB-INF/jsp/margin.jsp" />
 </body>
+  
 </html>
 

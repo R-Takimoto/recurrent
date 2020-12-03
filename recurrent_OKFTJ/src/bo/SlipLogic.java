@@ -6,7 +6,7 @@ import model.Terminal;
 
 public class SlipLogic {
 
-	public Slips payment(Terminal terminal) {
+	public Slips execute(Terminal terminal) {
 		OrderDAO dao = new OrderDAO();
 
 		Slips slips = dao.reedOrder(terminal);

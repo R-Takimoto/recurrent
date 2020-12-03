@@ -1,11 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
 <!DOCTYPE html>
+
 <html>
+
 <head>
-<meta charset="UTF-8">
-<title>商品詳細画面</title>
+	<meta charset="UTF-8">
+	<title>商品詳細画面</title>
 </head>
 <body>
 	<div class="container">
@@ -18,7 +21,6 @@
 				<c:if test="${empty action}">
 					<img src="images/setmenu/setmenu1.jpg" class="img-thumbnail"
 						alt="かつ丼セット" />
-
 					<h3>商品タイトル</h3>
 					<h3>●●●円</h3>
 					<h3>●●●カロリー</h3>
@@ -30,8 +32,6 @@
 					<a href="javascript:history.back()">メニューに戻る</a>
 				</c:if>
 				<!-- 商品詳細画面ここまで -->
-
-
 				<!-- カート数量変更画面 -->
 				<c:if test="${action=='alter'}">
 					<img src="image/katsudon.jpg" alt="カツ丼セット（仮）" />
@@ -52,4 +52,5 @@
 	</div>
 	<jsp:include page="/WEB-INF/jsp/margin.jsp" />
 </body>
+
 </html>

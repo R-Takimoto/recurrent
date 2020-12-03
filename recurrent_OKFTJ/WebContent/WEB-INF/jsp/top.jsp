@@ -6,8 +6,6 @@
 <html lang="ja">
 
 <head>
-
-
 <title>>リ・カレント亭</title>
 <link rel="stylesheet" href="css/style.css">
 <link href="https://fonts.googleapis.com/earlyaccess/hannari.css"
@@ -111,6 +109,6 @@
 		</div>
 	</div>
 	</div>
-
 </body>
+
 </html>
