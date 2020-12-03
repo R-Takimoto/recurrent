@@ -16,10 +16,11 @@
 		<div class="row">
 			<jsp:include page="/WEB-INF/jsp/menuTab.jsp" />
 			<jsp:include page="/WEB-INF/jsp/menuButton.jsp" />
-			<div class="col-sm-10">
+			<div class="col-sm-10 main">
 				<c:choose>
 					<c:when test="${action=='done'}">
 						<!--エネルギー計算結果画面 -->
+
 						<h2>推定エネルギー計算結果画面</h2>
 						<p>あなたの「1日に必要なエネルギー必要量」をしらべてみましょう</p>
 						<form action="/recurrent/EnergyServlet?action=done" method="post">
@@ -94,11 +95,13 @@
 						<input type="reset" value="リセット"/>
 					</form>
 					<!-- エネルギー計算ここまで -->
+
 					</c:otherwise>
 				</c:choose>
 			</div>
 		</div>
 	</div>
+		<jsp:include page="/WEB-INF/jsp/margin.jsp" />
 </body>
 
 </html>

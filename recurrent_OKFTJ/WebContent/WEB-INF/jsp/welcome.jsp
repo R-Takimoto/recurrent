@@ -7,12 +7,12 @@
 <meta charset="UTF-8">
 <title>ようこそリカレント亭へ</title>
 </head>
-<body style=" background-color: #ffbf1f;" >
-<h6>Welcome to リ・カレント亭</h6>
-<div class="button_wrapper">
-<form action="/recurrent/WelcomeServlet" method="post">
-<input type="submit" value="注文・メニューへ" class="button">
-</form>
-</div>
+<body style="background-color: #ffbf1f;">
+	<h6>Welcome to リ・カレント亭</h6>
+	<div class="button_wrapper">
+		<form action="/recurrent/WelcomeServlet" method="post">
+			<input type="submit" value="注文・メニューへ" class="button">
+		</form>
+	</div>
 </body>
 </html>
