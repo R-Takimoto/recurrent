@@ -10,7 +10,7 @@ public class LoginTest {
 
 		Terminal terminal = new Terminal("o16");
 
-		boolean judge = logic.login(terminal);
+		boolean judge = logic.execute(terminal);
 
 		System.out.println(judge);
 

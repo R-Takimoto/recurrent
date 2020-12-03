@@ -7,7 +7,9 @@ public class Orders {
 	ArrayList<Order> orders = new ArrayList<Order>();
 
 	//コンストラクタ
-	public Orders() {}
+	public Orders() {
+		this.orders = new ArrayList<Order>();
+	}
 
 	//ゲッター
 	public ArrayList<Order> getOrders() {

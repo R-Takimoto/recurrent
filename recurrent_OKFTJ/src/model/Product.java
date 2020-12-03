@@ -2,16 +2,16 @@ package model;
 
 public class Product {
 	//フィールド
-	private String typeCode, item, variety, product, orderType;
-	private int price, calorie;
+	private String typeCode, item, variety, productName, orderType;
+	private int price, calorie, quantity;
 
 	//コンストラクタ
 	public Product() {};
-	public Product(String typeCode, String item, String variety, String product, int price, int calorie, String orderType) {
+	public Product(String typeCode, String item, String variety, String productName, int price, int calorie, String orderType) {
 		this.typeCode = typeCode;
 		this.item = item;
 		this.variety = variety;
-		this.product = product;
+		this.productName = productName;
 		this.price = price;
 		this.calorie = calorie;
 		this.orderType = orderType;
@@ -36,11 +36,11 @@ public class Product {
 	public void setVariety(String variety) {
 		this.variety = variety;
 	}
-	public String getProduct() {
-		return product;
+	public String getProductName() {
+		return productName;
 	}
-	public void setProduct(String product) {
-		this.product = product;
+	public void setProductName(String productName) {
+		this.productName = productName;
 	}
 	public String getOrderType() {
 		return orderType;
@@ -60,5 +60,12 @@ public class Product {
 	public void setCalorie(int calorie) {
 		this.calorie = calorie;
 	}
+	public int getQuantity() {
+		return quantity;
+	}
+	public void setQuantity(int quantity) {
+		this.quantity = quantity;
+	}
+
 
 }
