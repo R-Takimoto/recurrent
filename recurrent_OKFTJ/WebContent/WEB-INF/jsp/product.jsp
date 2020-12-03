@@ -12,7 +12,7 @@
     <div class="row">
 <jsp:include page="/WEB-INF/jsp/menuTab.jsp" />
  <jsp:include page="/WEB-INF/jsp/menuButton.jsp" />
-  <div class="col-sm-10">
+  <div class="col-sm-10 main">
 
 <!-- 商品詳細画面 -->
 <c:if test="${empty action}">
@@ -23,7 +23,7 @@
 <h3>●●●カロリー</h3>
 <form action="/recurrent/CartServlet" method="post">
 	数量：<input type="number" name="quantity" value="1" min="1" max="20" requied/><br>
-	<input type="submit" value="注文カートに入れる"/>
+	<input type="submit" value="注文カートに入れる" class="button"/>
 </form>
 <a href="javascript:history.back()">メニューに戻る</a>
 </c:if>
@@ -39,8 +39,8 @@
 <form action="/recurrent/CartServlet?action=confirm" method="post">
 	<!-- ↓カート内の数量の数が初期値に入るようにする -->
 	数量：<input type="number" name="quantity" value="1" min="1" max="20" requied/><br>
-	<input type="submit" name="quantityChange" value="数量変更"/>
-	<input type="submit" name="delate" value="商品削除"/>
+	<input type="submit" name="quantityChange" value="数量変更" class="button"/>
+	<input type="submit" name="delate" value="商品削除" class="button"/>
 </form>
 </c:if>
 <!-- カート数量変更画面ここまで -->

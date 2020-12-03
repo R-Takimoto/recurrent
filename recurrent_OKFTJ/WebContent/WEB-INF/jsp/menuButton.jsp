@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
  <%@include file="/WEB-INF/jsp/boot.jsp" %>
 
- <div class="col-sm-2">
+ <div class="col-sm-2 main">
 	<div class="btn-group-vertical">
 
 		</div>
@@ -10,9 +10,9 @@
 		<p></p>
 		<p></p>
 		<form action="/recurrent/WelcomeServlet" method="post">
-		<input type="submit" value="通常メニュー"></form>
+		<input type="submit" value="通常メニュー" class="redbutton"></form>
 		<p></p>
-		<a href="/recurrent/CartServlet"><button type="button" class="btn btn-warning">注文カート</button></a>
+		<a href="/recurrent/CartServlet"><button type="button" class="btn-danger">注文カート</button></a>
 		<p></p>
 		<a href="/recurrent/AssistServlet?action=calorieSelect"><button type="button" class="btn btn-dark">カロリー絞り込み</button></a>
 		<p></p>
