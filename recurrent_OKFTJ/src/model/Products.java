@@ -7,7 +7,12 @@ public class Products {
 	private ArrayList<Product> products;
 
 	//コンストラクタ
-	public Products() {}
+	public Products() {
+		this.products = new ArrayList<Product>();
+	}
+	public Products(ArrayList<Product> products) {
+		this.products = products;
+	}
 
 	//ゲッター・セッター
 	public ArrayList<Product> getProducts() {
@@ -16,5 +21,6 @@ public class Products {
 
 	public void setProducts(ArrayList<Product> products) {
 		this.products = products;
-	};
+	}
+
 }
