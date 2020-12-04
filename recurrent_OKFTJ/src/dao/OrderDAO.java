@@ -7,6 +7,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+import model.ManagerSlip;
+import model.ManagerSlips;
 import model.Order;
 import model.Orders;
 import model.Slip;
@@ -50,13 +52,13 @@ public class OrderDAO {
 			    }
 		  }
 		  //伝票処理--------------------------------------------------
-		  public Slips reedOrder(Terminal terminal) {
+		  public Slips readOrder(Terminal terminal) {
 			  Slips slips = new Slips();
 			// データベースへ接続
 			  try (Connection conn = DriverManager.getConnection(
 			      JDBC_URL, DB_USER, DB_PASS)) {
 				  // SQL文を準備
-			      String sql = "SELECT product, quantity, price, calorie FROM orders JOIN product ON orders.typecode = product.typecode WHERE orderId = ?";
+			      String sql = "SELECT productname, quantity, price, calorie FROM orders JOIN product ON orders.typecode = product.typecode WHERE orderId = ?";
 			      PreparedStatement pStmt = conn.prepareStatement(sql);
 
 			      pStmt.setInt(1, terminal.getOrderId());
@@ -65,11 +67,11 @@ public class OrderDAO {
 //			      Slip slip = null;
 
 			      while(rs.next()) {
-			    	  String product = rs.getString("product");
+			    	  String productName = rs.getString("productname");
 			    	  int quantity = rs.getInt("quantity");
 			    	  int price = rs.getInt("price");
 			    	  int calorie = rs.getInt("calorie");
-			    	  Slip slip = new Slip(product, price, quantity, calorie);
+			    	  Slip slip = new Slip(productName, price, quantity, calorie);
 			    	  slips.getSlips().add(slip);
 //			    	  System.out.println(slips.getSlips().get(0).getProduct());
 					}
@@ -81,5 +83,52 @@ public class OrderDAO {
 			    }
 
 			  return null;
+		  }
+
+
+		//(管理画面)注文確認--------------------------------------------------
+		  public ManagerSlips findByOrder(String format,String store_seatId) {
+			  //初期値にnullをセット
+			  ManagerSlips managerSlips=null;
+
+			  // データベースへ接続
+			  try (Connection conn = DriverManager.getConnection(
+			      JDBC_URL, DB_USER, DB_PASS)) {
+				  // SQL文を準備
+			      String sql = "select orderdate,store_seatId,productname,price,calorie,quantity,item,variety,ordertype from orders join product on orders.typecode=product.typecode join item_variety on product.item_varietyId=item_variety.item_varietyId join item on item_variety.itemId=item.itemId join variety on item_variety.varietyId=variety.varietyId join ordertype on orders.ordertypeId=ordertype.ordertypeId join orderid on orders.orderId=orderid.orderId where orderdate=? and store_seatId=?";
+			      PreparedStatement pStmt = conn.prepareStatement(sql);
+
+			      pStmt.setString(1,format);
+			      pStmt.setString(2,store_seatId);
+			      //リザルト
+			      ResultSet rs = pStmt.executeQuery();
+
+			      //表全てをManagerSlipsクラスに格納（NullでなければManagerSlipsクラスをnewする）
+		    	  while(rs.next()){
+		    		  if(managerSlips==null) {
+		    			  managerSlips = new ManagerSlips();
+		    		  }
+		    		  String orderDate=rs.getString("orderdate");
+			    	  String productName = rs.getString("productname");
+			    	  int price = rs.getInt("price");
+			    	  int calorie = rs.getInt("calorie");
+			    	  int quantity = rs.getInt("quantity");
+			    	  String item=rs.getNString("item");
+			    	  String variety=rs.getString("variety");
+			    	  String ordertype=rs.getString("ordertype");
+
+
+			    	  ManagerSlip managerSlip=new ManagerSlip(orderDate,productName,price,calorie,quantity,item,variety,ordertype);
+
+
+			    	  managerSlips.getManagerSlips().add(managerSlip);
+
+				  }
+			    } catch (SQLException e) {
+			      e.printStackTrace();
+			      return null;
+
+			    }
+			    return managerSlips;
 		  }
 }
