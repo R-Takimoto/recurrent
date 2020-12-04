@@ -1,6 +1,7 @@
 package servlet;
 
 import java.io.IOException;
+import java.util.Map;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -10,8 +11,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import bo.WelcomeLogic;
-import model.Terminal;
+import bo.WelcomeMenuLogic;
+import model.Products;
 
 @WebServlet("/WelcomeServlet")
 public class WelcomeServlet extends HttpServlet {
@@ -19,18 +20,9 @@ public class WelcomeServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		request.setCharacterEncoding("utf-8");
-		//店舗＿席情報登録、注文ＩＤ取得(滝本)
-		{
-			String store_seatId = request.getParameter("store_seatId");
-
-			Terminal terminal = new Terminal(store_seatId);
-			WelcomeLogic welcomeL = new WelcomeLogic();
-			welcomeL.execute(terminal);
-
-			HttpSession session = request.getSession();
-			session.setAttribute("terminal", terminal);
-		}
+		//QRコードログイン
+		//		String qrCode = request.getParameter("store");
+		//		System.out.println(qrCode);
 
 		RequestDispatcher disp = request.getRequestDispatcher("/WEB-INF/jsp/welcome.jsp");
 		disp.forward(request, response);
@@ -40,8 +32,17 @@ public class WelcomeServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
+
+		WelcomeMenuLogic menuL = new WelcomeMenuLogic();
+		Map<String, Products> menu = menuL.execute();
+//セッションスコープにメニューを保存
+		HttpSession session = request.getSession();
+		session.setAttribute("menu", menu);
+
+//フォワード
 		RequestDispatcher disp = request.getRequestDispatcher("/WEB-INF/jsp/top.jsp");
 		disp.forward(request, response);
-	}
 
+	}
 }
+
