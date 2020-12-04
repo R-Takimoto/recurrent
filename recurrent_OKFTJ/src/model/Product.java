@@ -2,21 +2,20 @@ package model;
 
 public class Product {
 	//フィールド
-	private String typeCode, item, variety, productName, orderType;
-	private int price, calorie, quantity;
+	private String typeCode, item_varietyId, productName, image;
+	private int price, calorie;
 
 	//コンストラクタ
 	public Product() {};
-	public Product(String typeCode, String item, String variety, String productName, int price, int calorie, String orderType) {
+	public Product(String typeCode, String item_varietyId, String productName, int price, int calorie, String image) {
 		this.typeCode = typeCode;
-		this.item = item;
-		this.variety = variety;
+		this.item_varietyId = item_varietyId;
 		this.productName = productName;
 		this.price = price;
 		this.calorie = calorie;
-		this.orderType = orderType;
-	}
+		this.image = image;
 
+	}
 	//ゲッター・セッター
 	public String getTypeCode() {
 		return typeCode;
@@ -24,17 +23,11 @@ public class Product {
 	public void setTypeCode(String typeCode) {
 		this.typeCode = typeCode;
 	}
-	public String getItem() {
-		return item;
+	public String getItem_varietyId() {
+		return item_varietyId;
 	}
-	public void setItem(String item) {
-		this.item = item;
-	}
-	public String getVariety() {
-		return variety;
-	}
-	public void setVariety(String variety) {
-		this.variety = variety;
+	public void setItem_varietyId(String item_varietyId) {
+		this.item_varietyId = item_varietyId;
 	}
 	public String getProductName() {
 		return productName;
@@ -42,11 +35,11 @@ public class Product {
 	public void setProductName(String productName) {
 		this.productName = productName;
 	}
-	public String getOrderType() {
-		return orderType;
+	public String getImage() {
+		return image;
 	}
-	public void setOrderType(String orderType) {
-		this.orderType = orderType;
+	public void setImage(String image) {
+		this.image = image;
 	}
 	public int getPrice() {
 		return price;
@@ -59,12 +52,6 @@ public class Product {
 	}
 	public void setCalorie(int calorie) {
 		this.calorie = calorie;
-	}
-	public int getQuantity() {
-		return quantity;
-	}
-	public void setQuantity(int quantity) {
-		this.quantity = quantity;
 	}
 
 
