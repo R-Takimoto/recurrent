@@ -1,6 +1,8 @@
 package model;
 
-public class Terminal {
+import java.io.Serializable;
+
+public class Terminal implements Serializable {
 	//フィールド
 	int orderId, orderBranch;
 	String store_seatId;

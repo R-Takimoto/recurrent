@@ -1,9 +1,10 @@
 package model;
 
+import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
-public class Order {
+public class Order implements Serializable {
 	//フィールド
 //	private Date orderDate;
 	private int quantity, ordertypeId, cancel;
