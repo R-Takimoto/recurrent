@@ -9,6 +9,7 @@
 <head>
 	<meta charset="UTF-8">
 	<title>カート</title>
+
 </head>
 
 <body>
@@ -47,7 +48,6 @@
 			</div>
 		</div>
 	</div>
-	<jsp:include page="/WEB-INF/jsp/margin.jsp" />
 </body>
 
 </html>

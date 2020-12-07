@@ -9,7 +9,7 @@
 <body style="background-color: #ffbf1f;">
 	<h6>Welcome to リ・カレント亭</h6>
 	<div class="button_wrapper">
-		<form action="/recurrent/WelcomeServlet" method="post">
+		<form action="/recurrent_OKFTJ/WelcomeServlet" method="post">
 			<input type="submit" value="注文・メニューへ" class="button">
 		</form>
 	</div>

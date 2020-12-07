@@ -26,8 +26,7 @@
 
 		</div>
 	</div>
-	<jsp:include page="/WEB-INF/jsp/margin.jsp" />
 </body>
-  
+
 </html>
 

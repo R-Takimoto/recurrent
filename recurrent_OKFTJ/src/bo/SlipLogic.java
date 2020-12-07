@@ -9,7 +9,7 @@ public class SlipLogic {
 	public Slips execute(Terminal terminal) {
 		OrderDAO dao = new OrderDAO();
 
-		Slips slips = dao.reedOrder(terminal);
+		Slips slips = dao.readOrder(terminal);
 
 		return slips;
 	}
