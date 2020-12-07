@@ -1,13 +1,14 @@
 package bo;
 
+import java.util.ArrayList;
 import java.util.Map;
 
 import dao.MenuDAO;
-import model.Products;
+import model.Product;
 
 public class WelcomeMenuLogic {
 
-	public Map<String, Products> execute() {
+	public Map<String, ArrayList<Product>> execute() {
 
 		MenuDAO dao = new MenuDAO();
 
