@@ -1,6 +1,7 @@
 package servlet;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -11,7 +12,6 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import model.Order;
-import model.Orders;
 
 @WebServlet("/CartServlet")
 public class CartServlet extends HttpServlet {
@@ -20,6 +20,10 @@ public class CartServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		request.setCharacterEncoding("utf-8");
+		//カート内商品の情報をjspに送る
+		{
+
+		}
 
 		//フォワード
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/cart.jsp");
@@ -37,17 +41,19 @@ public class CartServlet extends HttpServlet {
 			{
 				String typeCode = request.getParameter("typeCode");
 				String productName = request.getParameter("productName");
-				int orderTypeId = Integer.parseInt(request.getParameter("orderTypeId"));
 				int quantity = Integer.parseInt(request.getParameter("quantity"));
-				Order order = new Order(typeCode, productName, quantity, orderTypeId);
+				int price = Integer.parseInt(request.getParameter("price"));
+				int calorie = Integer.parseInt(request.getParameter("calorie"));
+				int orderTypeId = Integer.parseInt(request.getParameter("orderTypeId"));
+				Order order = new Order(typeCode, productName, quantity,price, calorie, orderTypeId);
 
 				HttpSession session = request.getSession();
-				Orders orders = (Orders) session.getAttribute("orders");
+				ArrayList<Order> orders = (ArrayList<Order>) session.getAttribute("orders");
 				if(orders == null) {
-					orders = new Orders();
+					orders = new ArrayList<Order>();
 				}
-				orders.getOrders().add(order);
-				System.out.println(orders.getOrders().get(0).getProductName());
+				orders.add(order);
+				System.out.println(orders.get(0).getProductName());
 
 				session.setAttribute("orders", orders);
 			}

@@ -18,29 +18,31 @@
 			<jsp:include page="/WEB-INF/jsp/menuTab.jsp" />
 			<jsp:include page="/WEB-INF/jsp/menuButton.jsp" />
 			<div class="col-sm-10 main">
-        <table>
+				<div class="button_wrapper">
+					<form action="/recurrent/CartServlet?action=alter" method="post">
+						<input type="submit" value="数量変更・削除"/>
+					</form>
+				</div>
+				<div class="button_wrapper">
+					<table>
 						<tr>
 							<th>ご注文商品</th>
 							<th>数量</th>
 							<th>金額</th>
 							<th>カロリー</th>
+							<th>ご注文方法</th>
 						</tr>
-				</table>
-				<div class="button_wrapper">
-					<form action="/recurrent/CartServlet?action=alter" method="post">
-					  <table>
-						  <tr>
-							  <td><c:out value="${orders.orders[0].productName }" /></td>
-						  	<td><c:out value="${orders.orders[0].quantity }" /></td>
-					  		<td><c:out value="${orders.orders[0]. }" /></td>
-					  		<td><c:out value="${orders.orders[0].productName }" /></td>
-				  		</tr>
-					  </table>
-					  <input type="submit" value="数量変更・削除"/>
-				  </form>
-				</div>
-				<div class="button_wrapper">
+					</table>
 					<form action="/recurrent/OrderServlet" method="post">
+						<table>
+							<tr>
+								<td><c:out value="${orders[0].productName }" /></td>
+								<td><c:out value="${orders[0].quantity }" /></td>
+								<td><c:out value="${orders[0].price }" /></td>
+								<td><c:out value="${orders[0].calorie }" /></td>
+								<td><c:out value="${orders[0].ordertypeId }" /></td>
+								</tr>
+						</table>
 						<input type="submit" value="注文を確定する" class="button">
 					</form>
 				</div>

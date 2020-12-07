@@ -10,7 +10,6 @@ import java.util.HashMap;
 import java.util.Map;
 
 import model.Product;
-import model.Products;
 
 public class MenuDAO {
 
@@ -19,7 +18,7 @@ public class MenuDAO {
 		private final String DB_USER = "recurrent";
 		private final String DB_PASS = "0000";
 
-		public Map<String, Products> findAll() {
+		public Map<String, ArrayList<Product>> findAll() {
 
 			ArrayList<String> key = new ArrayList<>();
 			key.add("s");
@@ -29,20 +28,7 @@ public class MenuDAO {
 			key.add("t");
 			key.add("a");
 
-			Map<String, Products> productsM = new HashMap<String, Products>();
-			Products setproducts = new Products();
-
-//			AllProducts allProduct = new AllProducts();
-//			ArrayList<AllProducts> allproducts = new ArrayList<AllProducts>();
-//			ArrayList<ArrayList<Product>> allProducts = new ArrayList<ArrayList<Product>>();
-//
-//			Products products = new Products();
-//			ArrayList<Product> setproducts = new ArrayList<Product>();
-//			ArrayList<Product> japanproducts = new ArrayList<Product>();
-//			ArrayList<Product> westernproducts = new ArrayList<Product>();
-//			ArrayList<Product> drinkproducts = new ArrayList<Product>();
-//			ArrayList<Product> toppingproducts = new ArrayList<Product>();
-//			ArrayList<Product> anotherproducts = new ArrayList<Product>();
+			Map<String, ArrayList<Product>> productsM = new HashMap<String, ArrayList<Product>>();
 
 
 			// データベースへ接続
@@ -50,7 +36,7 @@ public class MenuDAO {
 					JDBC_URL, DB_USER, DB_PASS)) {
 
 				// SELECT文を準備
-				String sql = "SELECT productname,price,calorie,image FROM product WHERE item_varietyId LIKE ?";
+				String sql = "SELECT typecode, productname,price,calorie,image FROM product WHERE item_varietyId LIKE ?";
 				PreparedStatement pStmt = conn.prepareStatement(sql);
 				String[] it_v = {"_s","w", "y", "d", "t", "a"};
 				for(int i = 0; i < it_v.length; i++) {
@@ -58,18 +44,18 @@ public class MenuDAO {
 
 					// SELECTを実行し、結果表を取得
 					ResultSet rs = pStmt.executeQuery();
-
+					ArrayList<Product> setproducts = new ArrayList<Product>();
+//					Products setproducts = new Products();;
 					while (rs.next()) {
 						// データを取得 productクラスのインスタンス化
 						Product product = new Product();
+						product.setTypeCode(rs.getString("TYPECODE"));
 						product.setProductName(rs.getString("PRODUCTNAME"));
 						product.setPrice(rs.getInt("PRICE"));
 						product.setCalorie(rs.getInt("CALORIE"));
 						product.setImage(rs.getString("IMAGE"));
 
-						setproducts.getProducts().add(product);
-
-
+						setproducts.add(product);
 					}
 					productsM.put(key.get(i), setproducts);
 
