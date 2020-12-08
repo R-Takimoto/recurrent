@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
+<%@include file="/WEB-INF/include/boot.jsp"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -7,12 +8,15 @@
 <title>ガチャ画面</title>
 </head>
 <body>
+	<jsp:include page="/WEB-INF/include/menuTab.jsp" />
 	<div class="container">
+
+
 		<div class="row">
-			<jsp:include page="/WEB-INF/jsp/menuTab.jsp" />
-			<jsp:include page="/WEB-INF/jsp/menuButton.jsp" />
+			<jsp:include page="/WEB-INF/include/menuButton.jsp" />
 			<div class="col-sm-10 main">
-        １回８００円！！キャンセル可能！！
+
+
 				<h3>
 					<p class="text-sm-center">わくわくガチャ</p>
 				</h3>
@@ -25,9 +29,9 @@
 			</div>
 
 		</div>
+		<jsp:include page="/WEB-INF/include/margin.jsp" />
 	</div>
-	<jsp:include page="/WEB-INF/jsp/margin.jsp" />
+
 </body>
-  
 </html>
 
