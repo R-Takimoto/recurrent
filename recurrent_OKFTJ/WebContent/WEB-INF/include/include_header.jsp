@@ -5,5 +5,6 @@
 	<div class="header-wrapper">
 		<h6>リ・カレント亭</h6>
 		<%@ include file="../include/menu_nav.jsp" %>
+		<%@ include file="../include/mode_nav.jsp" %>
 	</div>
 </header>
