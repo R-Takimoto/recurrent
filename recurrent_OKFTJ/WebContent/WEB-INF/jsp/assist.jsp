@@ -1,21 +1,21 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-
+<%@include file="/WEB-INF/include/boot.jsp"%>
 <!DOCTYPE html>
-
 <html>
-
 <head>
-	<meta charset="UTF-8">
-	<title>絞り込み検索画面</title>
+<meta charset="UTF-8">
+<title>絞り込み検索画面</title>
 </head>
 
 <body>
+	<jsp:include page="/WEB-INF/include/menuTab.jsp" />
 	<div class="container">
+
+
 		<div class="row">
-      <jsp:include page="/WEB-INF/jsp/menuTab.jsp" />
-			<jsp:include page="/WEB-INF/jsp/menuButton.jsp" />
+			<jsp:include page="/WEB-INF/include/menuButton.jsp" />
 			<div class="col-sm-10 main">
 				<!-- カロリー絞り込み画面 -->
 				<c:if test="${action=='calorieSelect'}">
@@ -89,9 +89,12 @@
 					</form>
 				</c:if>
 				<!-- 価格絞り込みここまで -->
+
 			</div>
 		</div>
+
+		<jsp:include page="/WEB-INF/include/margin.jsp" />
 	</div>
-</div>
+
 </body>
 </html>

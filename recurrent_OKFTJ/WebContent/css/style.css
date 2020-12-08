@@ -159,6 +159,25 @@ img {
 .redbutton:hover {
   opacity       : 1;           /* カーソル時透明度 */
 }
+.bluebutton {
+  display       : inline-block;
+  border-radius : 5%;          /* 角丸       */
+  font-size     : 18pt;        /* 文字サイズ */
+  text-align    : center;      /* 文字位置   */
+  cursor        : pointer;     /* カーソル   */
+  padding       : 12px 12px;   /* 余白       */
+  background    : #000066;     /* 背景色     */
+  color         : #ffffff;     /* 文字色     */
+  line-height   : 1em;         /* 1行の高さ  */
+  transition    : .3s;         /* なめらか変化 */
+  box-shadow    : 6px 6px 3px #666666;  /* 影の設定 */
+  border        : 2px solid #000066;    /* 枠の指定 */
+}
+.bluebutton:hover {
+  box-shadow    : none;        /* カーソル時の影消去 */
+  color         : #000066;     /* 背景色     */
+  background    : #ffffff;     /* 文字色     */
+}
 
 .button {
   display       : inline-block;
@@ -179,6 +198,80 @@ img {
   color         : #000055;     /* 背景色     */
   background    : #ffffff;     /* 文字色     */
 }
+.yellowbutton {
+  display       : inline-block;
+  border-radius : 5%;          /* 角丸       */
+  font-size     : 18pt;        /* 文字サイズ */
+  text-align    : center;      /* 文字位置   */
+  cursor        : pointer;     /* カーソル   */
+  padding       : 12px 12px;   /* 余白       */
+  background    : #ffff1a;     /* 背景色     */
+  color         : #00007f;     /* 文字色     */
+  line-height   : 1em;         /* 1行の高さ  */
+  transition    : .3s;         /* なめらか変化 */
+  box-shadow    : 6px 6px 3px #666666;  /* 影の設定 */
+  border        : 2px solid #ffff1a;    /* 枠の指定 */
+}
+.yellowbutton:hover {
+  box-shadow    : none;        /* カーソル時の影消去 */
+  color         : #ffff1a;     /* 背景色     */
+  background    : #00007f;     /* 文字色     */
+}
+.greenbutton {
+  display       : inline-block;
+  border-radius : 5%;          /* 角丸       */
+  font-size     : 18pt;        /* 文字サイズ */
+  text-align    : center;      /* 文字位置   */
+  cursor        : pointer;     /* カーソル   */
+  padding       : 12px 12px;   /* 余白       */
+  background    : #003300;     /* 背景色     */
+  color         : #ffffff;     /* 文字色     */
+  line-height   : 1em;         /* 1行の高さ  */
+  transition    : .3s;         /* なめらか変化 */
+  box-shadow    : 6px 6px 3px #666666;  /* 影の設定 */
+  border        : 2px solid #003300;    /* 枠の指定 */
+}
+.greenbutton:hover {
+  box-shadow    : none;        /* カーソル時の影消去 */
+  color         : #003300;     /* 背景色     */
+  background    : #ffffff;     /* 文字色     */
+}
+.red2button {
+  display       : inline-block;
+  border-radius : 5%;          /* 角丸       */
+  font-size     : 18pt;        /* 文字サイズ */
+  text-align    : center;      /* 文字位置   */
+  cursor        : pointer;     /* カーソル   */
+  padding       : 12px 12px;   /* 余白       */
+  background    : #990000;     /* 背景色     */
+  color         : #ffffff;     /* 文字色     */
+  line-height   : 1em;         /* 1行の高さ  */
+  transition    : .3s;         /* なめらか変化 */
+  box-shadow    : 6px 6px 3px #666666;  /* 影の設定 */
+  border        : 2px solid #990000;    /* 枠の指定 */
+}
+.red2button:hover {
+  box-shadow    : none;        /* カーソル時の影消去 */
+  color         : #990000;     /* 背景色     */
+  background    : #ffffff;     /* 文字色     */
+}
+.logoutbutton {
+  display       : inline-block;
+  font-size     : 12pt;        /* 文字サイズ */
+  text-align    : center;      /* 文字位置   */
+  cursor        : pointer;     /* カーソル   */
+  padding       : 8px 41px;   /* 余白       */
+  background    : rgba(0, 0, 0, 0.74);     /* 背景色     */
+  color         : #ffffff;     /* 文字色     */
+  line-height   : 1em;         /* 1行の高さ  */
+  transition    : .3s;         /* なめらか変化 */
+  border        : 2px solid rgba(0, 0, 0, 0.74);    /* 枠の指定 */
+}
+.logoutbutton:hover {
+  color         : rgba(0, 0, 0, 0.74);     /* 背景色     */
+  background    : #ffffff;     /* 文字色     */
+}
+
 .button_wrapper{
    text-align:center;
 
@@ -203,3 +296,25 @@ img {
  	height: auto;
 
 }
+
+.kanri_main{
+	background-color: #c7eff0;
+}
+
+.sampleBox {
+	/* border:1px solid #cccccc; */
+	height: 200px;
+	position: relative;
+
+}
+
+.sampleBox img {
+	position: absolute;
+	right: 0;
+	bottom: 0;
+
+}
+.container {
+     max-width: 100%;
+}
+
