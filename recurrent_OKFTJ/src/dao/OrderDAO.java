@@ -33,11 +33,9 @@ public class OrderDAO {
 			      PreparedStatement pStmt = conn.prepareStatement(sql);
 
 			      int branch = terminal.getOrderBranch();
-			      System.out.println(branch);
 			      for(int i = 0; i < orderList.size(); i ++) {
 				      branch ++;
 			    	  terminal.setOrderBranch(branch);
-			    	  System.out.println(terminal.getOrderBranch());
 			    	  pStmt.setString(1, orderList.get(i).getOrderDate());
 			    	  pStmt.setInt(2, terminal.getOrderId());
 			    	  pStmt.setInt(3, terminal.getOrderBranch());

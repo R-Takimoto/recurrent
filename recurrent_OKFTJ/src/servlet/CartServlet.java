@@ -1,7 +1,6 @@
 package servlet;
 
 import java.io.IOException;
-import java.util.ArrayList;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -12,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import model.Order;
+import model.Orders;
 
 @WebServlet("/CartServlet")
 public class CartServlet extends HttpServlet {
@@ -20,10 +20,6 @@ public class CartServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		request.setCharacterEncoding("utf-8");
-		//カート内商品の情報をjspに送る
-		{
-
-		}
 
 		//フォワード
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/cart.jsp");
@@ -48,12 +44,12 @@ public class CartServlet extends HttpServlet {
 				Order order = new Order(typeCode, productName, quantity,price, calorie, orderTypeId);
 
 				HttpSession session = request.getSession();
-				ArrayList<Order> orders = (ArrayList<Order>) session.getAttribute("orders");
+				Orders orders = (Orders) session.getAttribute("orders");
 				if(orders == null) {
-					orders = new ArrayList<Order>();
+					orders = new Orders();
 				}
-				orders.add(order);
-				System.out.println(orders.get(0).getProductName());
+				orders.getOrders().add(order);
+
 
 				session.setAttribute("orders", orders);
 			}

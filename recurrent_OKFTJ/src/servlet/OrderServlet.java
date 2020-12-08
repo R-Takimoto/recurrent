@@ -36,7 +36,7 @@ public class OrderServlet extends HttpServlet {
 
 			orderL.execute(orders, terminal);
 
-			System.out.println("注文かんりょ");
+			session.removeAttribute("orders");
 		}
 		RequestDispatcher disp = request.getRequestDispatcher("/WEB-INF/jsp/order.jsp");
 		disp.forward(request, response);
