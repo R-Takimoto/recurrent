@@ -9,7 +9,10 @@
 <body>
 
 	<p>注文管理</p>
-	<a href="/recurrent/LoginServlet">トップへ戻る</a>
+	<form action="/recurrent/LoginServlet?action=toppage" method="post">
+		<input type="submit" value="トップへ戻る"/>
+	</form>
+
 	<p>座席を指定してください</p>
 	<table border="1" style="border-collapse: collapse">
 		<tr>

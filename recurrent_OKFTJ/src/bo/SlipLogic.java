@@ -6,10 +6,10 @@ import model.Terminal;
 
 public class SlipLogic {
 
-	public Slips execute(Terminal terminal) {
+	public Slips payment(Terminal terminal) {
 		OrderDAO dao = new OrderDAO();
 
-		Slips slips = dao.readOrder(terminal);
+		Slips slips = dao.reedOrder(terminal);
 
 		return slips;
 	}

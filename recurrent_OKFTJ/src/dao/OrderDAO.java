@@ -22,7 +22,7 @@ public class OrderDAO {
 		  private final String DB_PASS = "0000";
 
 		  //注文処理-----------------------------------------------------
-		  public void registerOreder(Orders orders, Terminal terminal) {
+		  public void registerOreder(Orders orders) {
 			  // データベースへ接続
 			  try (Connection conn = DriverManager.getConnection(
 			      JDBC_URL, DB_USER, DB_PASS)) {
@@ -32,21 +32,21 @@ public class OrderDAO {
 			      String sql = "INSERT INTO orders SET orderdate=?, orderId=?, orderbranch=?, typecode=?, quantity=?, ordertypeId=?";
 			      PreparedStatement pStmt = conn.prepareStatement(sql);
 
-			      int branch = terminal.getOrderBranch();
 			      for(int i = 0; i < orderList.size(); i ++) {
-				      branch ++;
-			    	  terminal.setOrderBranch(branch);
 			    	  pStmt.setString(1, orderList.get(i).getOrderDate());
-			    	  pStmt.setInt(2, terminal.getOrderId());
-			    	  pStmt.setInt(3, terminal.getOrderBranch());
+			    	  pStmt.setInt(2, orderList.get(i).getOrderId());
+			    	  pStmt.setInt(3, orderList.get(i).getOrderbranch());
 			    	  pStmt.setString(4, orderList.get(i).getTypeCode());
 				      pStmt.setInt(5, orderList.get(i).getQuantity());
 				      pStmt.setInt(6, orderList.get(i).getOrdertypeId());
-				      pStmt.executeUpdate();
+
+				      int a = pStmt.executeUpdate();
+				      System.out.println(a);
 			      }
 
 			    } catch (SQLException e) {
 			      e.printStackTrace();
+
 			    }
 		  }
 		  //伝票処理--------------------------------------------------

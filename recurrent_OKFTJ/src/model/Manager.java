@@ -10,6 +10,11 @@ public class Manager {
 		this.id = id;
 		this.pass = pass;
 	}
+	public Manager(String id,String pass,String name) {
+		this.id=id;
+		this.pass=pass;
+		this.name=name;
+	}
 
 	//ゲッター・セッター
 	public String getId() {

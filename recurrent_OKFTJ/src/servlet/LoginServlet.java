@@ -32,41 +32,50 @@ public class LoginServlet extends HttpServlet {
 
 		//リクエストパラメータ―の取得
 		request.setCharacterEncoding("UTF-8");
-		String id = request.getParameter("id");
-		String pass = request.getParameter("pass");
+		String action=request.getParameter("action");
 
-		//Idから店情報を生成
-		Store store=new Store();
-		if(id.matches("koube.*")) {
-			store.setStoreInitial("k");
-			store.setStoreName("神戸店");
-			System.out.println("kobe店");
-		}else if(id.matches("osaka.*")){
-			store.setStoreInitial("o");
-			store.setStoreName("大阪店");
-		}
-
-		//店情報をセッションスコープに保存
-		HttpSession session=request.getSession();
-		session.setAttribute("store", store);
-
-
-		//System.out.println(id);
-		//System.out.println(pass);
-
-		//ログイン処理の実行
-		Login login = new Login(id,pass);
-		LoginLogic bo = new LoginLogic();
-		boolean result = bo.execute(login);
-
-		//アカウントがあればトップ画面にフォワード、なければログイン画面にリダイレクト
-		if(result) {
+		//action属性がnullでないならトップ画面に戻るボタン、nullならログイン情報取得
+		if(action!=null) {
 			RequestDispatcher disp = request.getRequestDispatcher("/WEB-INF/jsp/login.jsp");
 			disp.forward(request, response);
+		}else {
+			String id = request.getParameter("id");
+			String pass = request.getParameter("pass");
 
-		}else{
-			response.sendRedirect("/recurrent/LoginServlet");
+			//Idから店情報を生成
+			Store store=new Store();
+			if(id.matches("koube.*")) {
+				store.setStoreInitial("k");
+				store.setStoreName("神戸店");
+				System.out.println("kobe店");
+			}else if(id.matches("osaka.*")){
+				store.setStoreInitial("o");
+				store.setStoreName("大阪店");
+			}
+
+			//店情報をセッションスコープに保存
+			HttpSession session=request.getSession();
+			session.setAttribute("store", store);
+
+
+			//System.out.println(id);
+			//System.out.println(pass);
+
+			//ログイン処理の実行
+			Login login = new Login(id,pass);
+			LoginLogic bo = new LoginLogic();
+			boolean result = bo.execute(login);
+
+			//アカウントがあればトップ画面にフォワード、なければログイン画面にリダイレクト
+			if(result) {
+				RequestDispatcher disp = request.getRequestDispatcher("/WEB-INF/jsp/login.jsp");
+				disp.forward(request, response);
+
+			}else{
+				response.sendRedirect("/recurrent/LoginServlet");
+			}
 		}
+
 
 
 

@@ -12,7 +12,7 @@ public class SlipsTest {
 
 		SlipLogic lo = new SlipLogic();
 
-		Slips slips = lo.execute(terminal);
+		Slips slips = lo.payment(terminal);
 
 		System.out.println(slips.getSlips().get(0).getProduct());
 
