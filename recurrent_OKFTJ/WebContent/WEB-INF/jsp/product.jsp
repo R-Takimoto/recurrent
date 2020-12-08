@@ -1,21 +1,21 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+    pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <!DOCTYPE html>
 
-<html>
+<html lang="ja">
 
 <head>
 	<%@ include file="../include/include_meta.jsp" %>
-	<title>商品詳細画面</title>
-	<jsp:include page="../include/include_css.jsp" />
+	<title>>リ・カレント亭</title>
+	<%@ include file="../include/include_css.jsp" %>
 </head>
 <body>
 	<div class="container">
 		<%@ include file="../include/include_header.jsp" %>
-		<%@ include file="../include/mode_nav.jsp" %>
-		<main>
+
+	<main>
 			<div class="row">
 				<div class="col-sm-10 main">
 					<!-- 商品詳細画面 -->
@@ -62,9 +62,10 @@
 					<!-- カート数量変更画面ここまで -->
 				</div>
 			</div>
-		</main>
+		</div>
+		<jsp:include page="/WEB-INF/include/margin.jsp" />
+	</main>
 	</div>
-	<%@ include file="../include/bootstrap_script.jsp" %>
+  <%@ include file="../include/bootstrap_script.jsp" %>
 </body>
-
 </html>
