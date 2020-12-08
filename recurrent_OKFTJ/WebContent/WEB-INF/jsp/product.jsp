@@ -19,18 +19,28 @@
 
 				<!-- 商品詳細画面 -->
 				<c:if test="${empty action}">
-					<img src="images/setmenu/setmenu1.jpg" class="img-thumbnail"
-						alt="かつ丼セット" />
-
-					<h3>商品タイトル</h3>
-					<h3>●●●円</h3>
-					<h3>●●●カロリー</h3>
-					<form action="/recurrent/CartServlet" method="post">
-						数量：<input type="number" name="quantity" value="1" min="1" max="20"
-							requied /><br> <input type="submit" value="注文カートに入れる"
-							class="button" />
-					</form>
-					<a href="javascript:history.back()">メニューに戻る</a>
+					<div class="row">
+						<img src="images/setmenu/<c:out value="${product.image }"/>" alt="<c:out value="${product.productName }" />" class="img-thumbnail" />
+						<div>
+							<h3 class="a"><c:out value="${product.productName }" /></h3>
+							<div class="row">
+								<p><c:out value="${product.price }"/>円</p>
+								<p><c:out value="${product.calorie }"/>カロリー</p>
+							</div>
+							<form action="/recurrent/CartServlet" method="post">
+								<input type="hidden" name="typeCode" value="<c:out value="${product.typeCode }"/>" />
+								<input type="hidden" name="productName" value="<c:out value="${product.productName }"/>" />
+								<input type="hidden" name="price" value="<c:out value="${product.price }"/>" />
+								<input type="hidden" name="calorie" value="<c:out value="${product.calorie }"/>" />
+								<input type="hidden" name="orderTypeId" value="<c:out value="${orderTypeId }"/>" />
+								<p>数量：<input type="number" name="quantity" min="1" max="20" requied /></p>
+								<div class="row">
+									<input type="submit" value="注文カートに入れる" class="button" />
+									<a href="javascript:history.back()">メニューに戻る</a>
+								</div>
+							</form>
+						</div>
+					</div>
 				</c:if>
 				<!-- 商品詳細画面ここまで -->
 
