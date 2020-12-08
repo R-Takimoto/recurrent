@@ -8,11 +8,11 @@ public class Order implements Serializable {
 	//フィールド
 //	private Date orderDate;
 	private int quantity, price, calorie, ordertypeId, cancel;
-	private String orderDate, typeCode, productName;
+	private String orderDate, typeCode, productName, image;
 
 	//コンストラクタ
 	public Order() {};
-	public Order(String typeCode, String productName, int quantity, int price, int calorie, int ordertypeId) {
+	public Order(String typeCode, String productName, String image, int quantity, int price, int calorie, int ordertypeId) {
 		//日付処理
 		LocalDateTime now = LocalDateTime.now();//現在時刻
 		 DateTimeFormatter Format = DateTimeFormatter.ofPattern("yyyy-MM-dd");//フォーマット指定
@@ -20,6 +20,7 @@ public class Order implements Serializable {
 		 this.orderDate = format;
 		 this.typeCode = typeCode;
 		 this.productName = productName;
+		 this.image = image;
 		 this.quantity = quantity;
 		 this.price = price;
 		 this.calorie = calorie;
@@ -75,6 +76,13 @@ public class Order implements Serializable {
 	public void setCalorie(int calorie) {
 		this.calorie = calorie;
 	}
+	public String getImage() {
+		return image;
+	}
+	public void setImage(String image) {
+		this.image = image;
+	}
+
 
 
 

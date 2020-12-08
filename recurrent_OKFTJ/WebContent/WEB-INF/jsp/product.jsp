@@ -33,6 +33,7 @@
 									<input type="hidden" name="productName" value="<c:out value="${product.productName }"/>" />
 									<input type="hidden" name="price" value="<c:out value="${product.price }"/>" />
 									<input type="hidden" name="calorie" value="<c:out value="${product.calorie }"/>" />
+									<input type="hidden" name="image" value="<c:out value="${product.image }"/>" />
 									<input type="hidden" name="orderTypeId" value="<c:out value="${orderTypeId }"/>" />
 									<p>数量：<input type="number" name="quantity" value="1" min="1" max="20" requied /></p>
 									<div class="row">
