@@ -6,12 +6,11 @@
 <meta charset="UTF-8">
 <title>ようこそリカレント亭へ</title>
 </head>
-<body style="background-color: #ffbf1f;">
-	<h6>Welcome to リ・カレント亭</h6>
-	<div class="button_wrapper">
-		<form action="/recurrent/WelcomeServlet?orderTypeId=1" method="post">
-			<input type="submit" value="注文・メニューへ" class="button">
-		</form>
-	</div>
+<body>
+<h1>Welcome to リ・カレント亭</h1>
+<form action="/recurrent/WelcomeServlet" method="post">
+<input type="submit" value="注文・メニューへ">
+</form>
+
 </body>
 </html>

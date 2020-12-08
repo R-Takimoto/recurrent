@@ -5,11 +5,9 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
 
-import model.Product;
+import model.ManagerSlip;
+import model.ManagerSlips;
 import model.Products;
 
 public class MenuDAO {
@@ -19,54 +17,60 @@ public class MenuDAO {
 		private final String DB_USER = "recurrent";
 		private final String DB_PASS = "0000";
 
-		public Map<String, Products> findAll() {
 
-			ArrayList<String> key = new ArrayList<>();
-			key.add("s");
-			key.add("w");
-			key.add("y");
-			key.add("d");
-			key.add("t");
-			key.add("a");
+		//(管理画面)登録メニュー表示--------------------------------------------------
+		public Products findByMenu() {
 
-			Map<String, Products> productsM = new HashMap<String, Products>();
+		  //初期値にnullをセット
+		  ManagerSlips managerSlips=null;
+
+		  // データベースへ接続
+		  try (Connection conn = DriverManager.getConnection(
+		      JDBC_URL, DB_USER, DB_PASS)) {
+			  // SQL文を準備
+		      String sql = "select item,typecode,productname,price,calorie,variety\r\n" +
+		      		"from product\r\n" +
+		      		"join item_variety\r\n" +
+		      		"on product.item_varietyId=item_variety.item_varietyId\r\n" +
+		      		"join item\r\n" +
+		      		"on item_variety.itemId=item.itemId\r\n" +
+		      		"join variety\r\n" +
+		      		"on item_variety.varietyId=variety.varietyId";
+		      PreparedStatement pStmt = conn.prepareStatement(sql);
 
 
-			// データベースへ接続
-			try (Connection conn = DriverManager.getConnection(
-					JDBC_URL, DB_USER, DB_PASS)) {
+		      //リザルト
+		      ResultSet rs = pStmt.executeQuery();
 
-				// SELECT文を準備
-				String sql = "SELECT typecode, productname,price,calorie,image FROM product WHERE item_varietyId LIKE ?";
-				PreparedStatement pStmt = conn.prepareStatement(sql);
-				String[] it_v = {"_s","w", "y", "d", "t", "a"};
-				for(int i = 0; i < it_v.length; i++) {
-					pStmt.setString(1,it_v[i]);
+		      //表全てをManagerSlipsクラスに格納（NullでなければManagerSlipsクラスをnewする）
+	    	  while(rs.next()){
+	    		  if(managerSlips==null) {
+	    			  managerSlips = new ManagerSlips();
+	    		  }
+	    		  String orderDate=rs.getString("orderdate");
+		    	  String productName = rs.getString("productname");
+		    	  int price = rs.getInt("price");
+		    	  int calorie = rs.getInt("calorie");
+		    	  int quantity = rs.getInt("quantity");
+		    	  String item=rs.getNString("item");
+		    	  String variety=rs.getString("variety");
+		    	  String ordertype=rs.getString("ordertype");
 
-					// SELECTを実行し、結果表を取得
-					ResultSet rs = pStmt.executeQuery();
-					Products setproducts = new Products();
-					while (rs.next()) {
-						// データを取得 productクラスのインスタンス化
-						Product product = new Product();
-						product.setTypeCode(rs.getString("TYPECODE"));
-						product.setProductName(rs.getString("PRODUCTNAME"));
-						product.setPrice(rs.getInt("PRICE"));
-						product.setCalorie(rs.getInt("CALORIE"));
-						product.setImage(rs.getString("IMAGE"));
 
-						setproducts.getProducts().add(product);
-					}
-					productsM.put(key.get(i), setproducts);
-				}
-			} catch (SQLException e) {
-				e.printStackTrace();
-				return null;
+		    	  ManagerSlip managerSlip=new ManagerSlip(orderDate,productName,price,calorie,quantity,item,variety,ordertype);
 
-			}
 
-			return productsM ;
+		    	  managerSlips.getManagerSlips().add(managerSlip);
 
-		}
-	}
+			  }
+		    } catch (SQLException e) {
+		      e.printStackTrace();
+		      return null;
+
+		    }
+		    return managerSlips;
+	  }
+
+
+}
 

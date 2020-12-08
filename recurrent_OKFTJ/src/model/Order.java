@@ -1,32 +1,42 @@
 package model;
 
-import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
-public class Order implements Serializable {
+public class Order {
 	//フィールド
 //	private Date orderDate;
-	private int quantity, price, calorie, ordertypeId, cancel;
-	private String orderDate, typeCode, productName;
+	private int orderId, orderbranch, quantity, ordertypeId, cancel;
+	private String orderDate, typeCode;
 
 	//コンストラクタ
 	public Order() {};
-	public Order(String typeCode, String productName, int quantity, int price, int calorie, int ordertypeId) {
+	public Order(String typeCode, int orderId, int orderbranch, int quantity, int ordertypeId) {
 		//日付処理
 		LocalDateTime now = LocalDateTime.now();//現在時刻
 		 DateTimeFormatter Format = DateTimeFormatter.ofPattern("yyyy-MM-dd");//フォーマット指定
 		 String format = now.format(Format);//現在時刻をフォーマットに適用
 		 this.orderDate = format;
 		 this.typeCode = typeCode;
-		 this.productName = productName;
+		 this.orderId = orderId;
+		 this.orderbranch = orderbranch;
 		 this.quantity = quantity;
-		 this.price = price;
-		 this.calorie = calorie;
 		 this.ordertypeId = ordertypeId;
 	}
 
 	//ゲッター・セッター
+	public int getOrderId() {
+		return orderId;
+	}
+	public void setOrderId(int orderId) {
+		this.orderId = orderId;
+	}
+	public int getOrderbranch() {
+		return orderbranch;
+	}
+	public void setOrderbranch(int orderbranch) {
+		this.orderbranch = orderbranch;
+	}
 	public int getQuantity() {
 		return quantity;
 	}
@@ -57,25 +67,6 @@ public class Order implements Serializable {
 	public void setTypeCode(String typeCode) {
 		this.typeCode = typeCode;
 	}
-	public String getProductName() {
-		return productName;
-	}
-	public void setProductName(String productName) {
-		this.productName = productName;
-	}
-	public int getPrice() {
-		return price;
-	}
-	public void setPrice(int price) {
-		this.price = price;
-	}
-	public int getCalorie() {
-		return calorie;
-	}
-	public void setCalorie(int calorie) {
-		this.calorie = calorie;
-	}
-
 
 
 }

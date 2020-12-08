@@ -4,13 +4,13 @@ public class Energy {
 	int ageId;
 	int genderId;
 	int levelId;
-	int energy;
+	int energyId;
 
-	public Energy(int ageId,int genderId,int levelId,int energy) {
+	public Energy(int ageId,int genderId,int levelId,int energyId) {
 		this.ageId=ageId;
 		this.genderId=genderId;
 		this.levelId=levelId;
-		this.energy=energy;
+		this.energyId=energyId;
 	}
 //	仮3つコンストラクタ
 	public Energy(int ageId,int genderId,int levelId) {
@@ -31,23 +31,9 @@ public class Energy {
 		return levelId;
 	}
 
-	public int getEnergy() {
-		return energy;
+	public int getEnergyId() {
+		return energyId;
 	}
-	public void setAgeId(int ageId) {
-		this.ageId = ageId;
-	}
-	public void setGenderId(int genderId) {
-		this.genderId = genderId;
-	}
-	public void setLevelId(int levelId) {
-		this.levelId = levelId;
-	}
-	public void setEnergy(int energy) {
-		this.energy = energy;
-	}
-
-
 
 
 }

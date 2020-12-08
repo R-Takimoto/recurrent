@@ -10,13 +10,14 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 
-@WebServlet("/ProductServlet")
-public class ProductServlet extends HttpServlet {
+@WebServlet("/Menu")
+public class Menu extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		RequestDispatcher dispatcher=request.getRequestDispatcher("/WEB-INF/jsp/product.jsp");
+		//フォワード
+		RequestDispatcher dispatcher=request.getRequestDispatcher("/WEB-INF/jsp/Menu.jsp");
 		dispatcher.forward(request, response);
 	}
 

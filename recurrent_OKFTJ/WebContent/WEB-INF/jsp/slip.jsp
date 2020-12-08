@@ -7,26 +7,17 @@
 <title>伝票</title>
 </head>
 <body>
-	<div class="container">
-		<div class="row">
-			<jsp:include page="/WEB-INF/jsp/menuTab.jsp" />
-			<jsp:include page="/WEB-INF/jsp/menuButton.jsp" />
-			<div class="col-sm-10 main">
-
-				<p></p>
-				<p></p>
-				<h3>
-					<p class="text-sm-center">伝票</p>
-				</h3>
+<div class="container">
+    <div class="row">
+<jsp:include page="/WEB-INF/jsp/menuTab.jsp" />
+ <jsp:include page="/WEB-INF/jsp/menuButton.jsp" />
+  <div class="col-sm-10">
+伝票
 
 
-				<h3>
-					<a href="/recurrent/SlipServlet?action=kaikei"><p
-							class="text-sm-center">会計</p></a>
-				</h3>
-			</div>
-		</div>
-	</div>
-	<jsp:include page="/WEB-INF/jsp/margin.jsp" />
+<a href="/recurrent/SlipServlet?action=kaikei">会計</a>
+ </div>
+    </div>
+</div>
 </body>
 </html>
