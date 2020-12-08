@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import model.Product;
+import model.Products;
 
 
 @WebServlet("/ProductServlet")
@@ -28,8 +29,8 @@ public class ProductServlet extends HttpServlet {
 			String key = request.getParameter("key");
 
 			HttpSession session = request.getSession();
-			Map<String, ArrayList<Product>> menu = (Map<String, ArrayList<Product>>) session.getAttribute("menu");
-			ArrayList<Product> list = menu.get(key);
+			Map<String, Products> menu = (Map<String, Products>) session.getAttribute("menu");
+			ArrayList<Product> list = menu.get(key).getProducts();
 
 			for(int i = 0; i < list.size(); i ++) {
 				String comparison = list.get(i).getTypeCode();

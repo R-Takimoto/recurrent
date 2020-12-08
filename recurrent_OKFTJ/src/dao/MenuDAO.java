@@ -10,6 +10,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import model.Product;
+import model.Products;
 
 public class MenuDAO {
 
@@ -18,7 +19,7 @@ public class MenuDAO {
 		private final String DB_USER = "recurrent";
 		private final String DB_PASS = "0000";
 
-		public Map<String, ArrayList<Product>> findAll() {
+		public Map<String, Products> findAll() {
 
 			ArrayList<String> key = new ArrayList<>();
 			key.add("s");
@@ -28,11 +29,7 @@ public class MenuDAO {
 			key.add("t");
 			key.add("a");
 
-<<<<<<< HEAD
-			Map<String, ArrayList<Product>> productsM = new HashMap<String, ArrayList<Product>>();
-=======
 			Map<String, Products> productsM = new HashMap<String, Products>();
->>>>>>> takimoto/brach
 
 
 			// データベースへ接続
@@ -48,12 +45,7 @@ public class MenuDAO {
 
 					// SELECTを実行し、結果表を取得
 					ResultSet rs = pStmt.executeQuery();
-<<<<<<< HEAD
-					ArrayList<Product> setproducts = new ArrayList<Product>();
-=======
 					Products setproducts = new Products();
->>>>>>> takimoto/brach
-//					Products setproducts = new Products();;
 					while (rs.next()) {
 						// データを取得 productクラスのインスタンス化
 						Product product = new Product();
@@ -63,11 +55,7 @@ public class MenuDAO {
 						product.setCalorie(rs.getInt("CALORIE"));
 						product.setImage(rs.getString("IMAGE"));
 
-<<<<<<< HEAD
-						setproducts.add(product);
-=======
 						setproducts.getProducts().add(product);
->>>>>>> takimoto/brach
 					}
 					productsM.put(key.get(i), setproducts);
 				}

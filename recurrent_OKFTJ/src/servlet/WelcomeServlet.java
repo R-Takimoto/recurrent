@@ -1,10 +1,6 @@
 package servlet;
 
 import java.io.IOException;
-<<<<<<< HEAD
-import java.util.ArrayList;
-=======
->>>>>>> takimoto/brach
 import java.util.Map;
 
 import javax.servlet.RequestDispatcher;
@@ -17,11 +13,7 @@ import javax.servlet.http.HttpSession;
 
 import bo.WelcomeLogic;
 import bo.WelcomeMenuLogic;
-<<<<<<< HEAD
-import model.Product;
-=======
 import model.Products;
->>>>>>> takimoto/brach
 import model.Terminal;
 
 @WebServlet("/WelcomeServlet")
@@ -57,11 +49,7 @@ public class WelcomeServlet extends HttpServlet {
 
 
 		WelcomeMenuLogic menuL = new WelcomeMenuLogic();
-<<<<<<< HEAD
-		Map<String, ArrayList<Product>> menu = menuL.execute();
-=======
 		Map<String, Products> menu = menuL.execute();
->>>>>>> takimoto/brach
 		//セッションスコープにメニューを保存
 		HttpSession session = request.getSession();
 		session.setAttribute("menu", menu);
