@@ -12,6 +12,7 @@ import javax.servlet.http.HttpSession;
 
 import model.Order;
 import model.Orders;
+import model.Product;
 
 @WebServlet("/CartServlet")
 public class CartServlet extends HttpServlet {
@@ -20,6 +21,36 @@ public class CartServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		request.setCharacterEncoding("utf-8");
+		//カート内数量変更用ページへフォワードする
+		{
+			String ordersNum = request.getParameter("ordersNum");
+			if(!(ordersNum == null)) {
+				HttpSession session = request.getSession();
+				Orders orders = (Orders) session.getAttribute("orders");
+
+				int num = Integer.parseInt(ordersNum);
+
+				String typeCode = orders.getOrders().get(num).getTypeCode();
+				String productName = orders.getOrders().get(num).getProductName();
+				String image = orders.getOrders().get(num).getImage();
+				int price = orders.getOrders().get(num).getPrice();
+				int calorie = orders.getOrders().get(num).getCalorie();
+				Integer quantity = orders.getOrders().get(num).getQuantity();
+
+				Product product = new Product();
+				product.setTypeCode(typeCode);
+				product.setProductName(productName);
+				product.setPrice(price);
+				product.setCalorie(calorie);
+				product.setImage(image);
+				request.setAttribute("product", product);
+				request.setAttribute("quantity", quantity);
+
+				//フォワード
+				RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/product.jsp?action=alter");
+				dispatcher.forward(request, response);
+			}
+		}
 
 		//フォワード
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/cart.jsp");
@@ -37,11 +68,12 @@ public class CartServlet extends HttpServlet {
 			{
 				String typeCode = request.getParameter("typeCode");
 				String productName = request.getParameter("productName");
+				String image = request.getParameter("image");
 				int quantity = Integer.parseInt(request.getParameter("quantity"));
 				int price = Integer.parseInt(request.getParameter("price"));
 				int calorie = Integer.parseInt(request.getParameter("calorie"));
 				int orderTypeId = Integer.parseInt(request.getParameter("orderTypeId"));
-				Order order = new Order(typeCode, productName, quantity,price, calorie, orderTypeId);
+				Order order = new Order(typeCode, productName, image, quantity,price, calorie, orderTypeId);
 
 				HttpSession session = request.getSession();
 				Orders orders = (Orders) session.getAttribute("orders");

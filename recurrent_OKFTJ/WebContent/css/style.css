@@ -136,9 +136,15 @@ img {
   height: 250px;
   object-fit: cover; /* この一行を追加するだけ！ */
 }
+.container {
+	background-color: #ffbf1f;
+	max-width: 100%;
+	padding: 0;
+}
 
 .main{
-	background-color: #ffbf1f;
+	width: 90%;
+	margin: 0 auto;
 }
 
 
