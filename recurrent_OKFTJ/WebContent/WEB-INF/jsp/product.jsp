@@ -8,64 +8,59 @@
 
 <head>
 	<%@ include file="../include/include_meta.jsp" %>
-	<title>>リ・カレント亭</title>
-	<%@ include file="../include/include_css.jsp" %>
+	<title>商品詳細画面</title>
+	<jsp:include page="../include/include_css.jsp" />
+	<link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet">
+	<link rel="stylesheet" href="css/product.css">
 </head>
 <body>
 	<div class="container">
 		<%@ include file="../include/include_header.jsp" %>
-
-	<main>
-			<div class="row">
-				<div class="col-sm-10 main">
-					<!-- 商品詳細画面 -->
-					<c:if test="${empty action}">
-						<div class="row">
-							<img src="images/setmenu/<c:out value="${product.image }"/>" alt="<c:out value="${product.productName }" />" class="img-thumbnail" />
-							<div>
-								<h3 class="a"><c:out value="${product.productName }" /></h3>
-								<div class="row">
-									<p><c:out value="${product.price }"/>円</p>
-									<p><c:out value="${product.calorie }"/>カロリー</p>
-								</div>
-								<form action="/recurrent/CartServlet" method="post">
-									<input type="hidden" name="typeCode" value="<c:out value="${product.typeCode }"/>" />
-									<input type="hidden" name="productName" value="<c:out value="${product.productName }"/>" />
-									<input type="hidden" name="price" value="<c:out value="${product.price }"/>" />
-									<input type="hidden" name="calorie" value="<c:out value="${product.calorie }"/>" />
-									<input type="hidden" name="image" value="<c:out value="${product.image }"/>" />
-									<input type="hidden" name="orderTypeId" value="<c:out value="${orderTypeId }"/>" />
-									<p>数量：<input type="number" name="quantity" value="1" min="1" max="20" requied /></p>
-									<div class="row">
-										<input type="submit" value="注文カートに入れる" class="button" />
-										<a href="javascript:history.back()">メニューに戻る</a>
-									</div>
-								</form>
+		<div class="row wrapper">
+			<%@ include file="../include/mode_nav.jsp" %>
+			<main class="main">
+				<div class="products-wrapper">
+					<ul>
+						<li class="product-wrapper">
+							<img src="images/<c:out value="${product.image }"/>" alt="<c:out value="${product.productName }" />" />
+							<p><c:out value="${product.productName }" /></p>
+							<div class="price-calolie-wrapper">
+								<p><c:out value="${product.price }"/>円</p>
+								<p><c:out value="${product.calorie }"/>カロリー</p>
 							</div>
-						</div>
-					</c:if>
-					<!-- 商品詳細画面ここまで -->
-					<!-- カート数量変更画面 -->
-					<c:if test="${action=='alter'}">
-						<img src="image/katsudon.jpg" alt="カツ丼セット（仮）" />
-						<h3>商品タイトル</h3>
-						<h3>●●●円</h3>
-						<h3>●●●カロリー</h3>
-						<form action="/recurrent/CartServlet?action=confirm" method="post">
-							<!-- ↓カート内の数量の数が初期値に入るようにする -->
-							数量：<input type="number" name="quantity" value="1" min="1" max="20"
-								requied /><br> <input type="submit" name="quantityChange"
-								value="数量変更" class="button" /> <input type="submit" name="delate"
-								value="商品削除" class="button" />
+						</li>
+					</ul>
+				</div>
+				<div class="product-detail-wrapper">
+					<c:if test="${ empty change || change == 'change' }">
+						<form action="/recurrent/CartServlet<c:if test="${change=='change'}">?action=confirm</c:if>" method="post">
+							<input type="hidden" name="typeCode" value="<c:out value="${product.typeCode }"/>" />
+							<input type="hidden" name="productName" value="<c:out value="${product.productName }"/>" />
+							<input type="hidden" name="price" value="<c:out value="${product.price }"/>" />
+							<input type="hidden" name="calorie" value="<c:out value="${product.calorie }"/>" />
+							<input type="hidden" name="image" value="<c:out value="${product.image }"/>" />
+							<input type="hidden" name="orderTypeId" value="<c:out value="${orderTypeId }"/>" />
+							<div class="form-button-wrapper">
+								<button id="downButton" class="btn" type="button"><i class="fa-5x fas fa-minus-circle"></i></button>
+								<input id="count" class="num-area" type="number" name="quantity" value="1" min="1" max="20" requied />
+								<button id="upButton" class="btn" type="button"><i class="fa-5x fas fa-plus-circle"></i></button>
+							</div>
+							<c:if test="${ empty change }"><input type="submit" value="${button }" class="button" /></c:if>
+							<c:if test="${ change == 'change' }"><input type="submit" value="${button }" class="button" /></c:if>
+							<!-- <a href="javascript:history.back()" class="button">戻る</a>-->
 						</form>
 					</c:if>
-					<!-- カート数量変更画面ここまで -->
+					<c:if test="${change=='delete'}">
+						<form action="/recurrent/CartServlet?action=confirm" method="post">
+							<input type="hidden" name="quantity" value="1"/>
+							<input type="hidden" name="delete" value="delete" />
+							<input type="submit" value="商品取消" class="button" />
+						</form>
+					</c:if>
 				</div>
-			</div>
+			</main>
 		</div>
-		<jsp:include page="/WEB-INF/include/margin.jsp" />
-	</main>
 	</div>
-  <%@ include file="../include/bootstrap_script.jsp" %>
+	<%@ include file="../include/bootstrap_script.jsp" %>
 </body>
 </html>

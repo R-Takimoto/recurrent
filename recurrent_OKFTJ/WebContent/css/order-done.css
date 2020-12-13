@@ -1,0 +1,25 @@
+@charset "utf-8";
+
+.order-done {
+	font-size: 1.4rem;
+}
+
+
+p {
+	text-align: center;
+}
+
+@media only screen and (min-width: 769px) {
+	.relative {
+		position: relative;
+		width: 100%;
+	}
+
+	.order-done {
+		font-size: 1.8rem;
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translateY(-50%) translateX(-50%);
+	}
+}
