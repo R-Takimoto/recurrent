@@ -17,9 +17,9 @@ import model.Terminal;
 
 public class OrderDAO {
 	// データベース接続に使用する情報
-	private final String JDBC_URL = "jdbc:mysql://localhost:3306/recurrent?characterEncoding=UTF-8&serverTimezone=JST";
-	private final String DB_USER = "root";
-	private final String DB_PASS = "root";
+	private final String JDBC_URL = "jdbc:mysql://192.168.10.18:3306/recurrent?characterEncoding=UTF-8&serverTimezone=JST";
+	private final String DB_USER = "recurrent";
+	private final String DB_PASS = "0000";
 
 		//注文処理-----------------------------------------------------
 		  public void registerOreder(Orders orders, Terminal terminal) {
