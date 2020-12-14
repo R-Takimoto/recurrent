@@ -22,9 +22,14 @@ public class WelcomeServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+
+// フォワード先
+		String forwardPath = null;
+		String action = request.getParameter("action");
+		if(action == null){
 		//店舗＿席情報登録、注文ＩＤ取得(滝本)
-		{
 			String store_seatId = request.getParameter("store_seatId");
+
 			if(!(store_seatId == null)) {
 				Terminal terminal = new Terminal(store_seatId);
 				WelcomeLogic welcomeL = new WelcomeLogic();
@@ -34,9 +39,18 @@ public class WelcomeServlet extends HttpServlet {
 				session.setAttribute("terminal", terminal);
 			}
 
+			forwardPath="/WEB-INF/jsp/welcome.jsp";
+
+		}else if(action.equals("done")) {
+			String key = request.getParameter("key");
+			HttpSession session = request.getSession();
+			session.setAttribute("key", key);
+//			System.out.println("key");
+
+			forwardPath="/WEB-INF/jsp/top.jsp";
 		}
 
-		RequestDispatcher disp = request.getRequestDispatcher("/WEB-INF/jsp/welcome.jsp");
+		RequestDispatcher disp = request.getRequestDispatcher(forwardPath);
 		disp.forward(request, response);
 
 	}
@@ -45,19 +59,26 @@ public class WelcomeServlet extends HttpServlet {
 			throws ServletException, IOException {
 		request.setCharacterEncoding("utf-8");
 
-		Integer orderTypeId = Integer.parseInt(request.getParameter("orderTypeId"));
+			Integer orderTypeId = Integer.parseInt(request.getParameter("orderTypeId"));
+			String key = request.getParameter("key");
+//			System.out.println(orderTypeId);
+//			System.out.println(key);
 
+			if(!(orderTypeId == null)) {
 
-		WelcomeMenuLogic menuL = new WelcomeMenuLogic();
-		Map<String, Products> menu = menuL.execute();
-		//セッションスコープにメニューを保存
-		HttpSession session = request.getSession();
-		session.setAttribute("menu", menu);
-		session.setAttribute("orderTypeId", orderTypeId);
+				WelcomeMenuLogic menuL = new WelcomeMenuLogic();
+				Map<String, Products> menu = menuL.execute();
+//				ArrayList<Product> list = menu.get(key).getProducts();
+				//セッションスコープにメニューを保存
+				HttpSession session = request.getSession();
+				session.setAttribute("menu", menu);
+				session.setAttribute("orderTypeId", orderTypeId);
+				session.setAttribute("key", key);
+//				System.out.println(menu.get("s").getProducts().get(0).getProductName());
+			}
 
-		//フォワード
-		RequestDispatcher disp = request.getRequestDispatcher("/WEB-INF/jsp/top.jsp");
-		disp.forward(request, response);
+			RequestDispatcher disp = request.getRequestDispatcher("/WEB-INF/jsp/top.jsp");
+			disp.forward(request, response);
 
 	}
 }
