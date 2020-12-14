@@ -11,7 +11,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import bo.WelcomeMenuLogic;
 import model.Product;
 import model.Products;
 
@@ -35,11 +34,11 @@ public class PlayServlet extends HttpServlet {
 
 			//sessionスコープからメニュー取得
 			HttpSession session=request.getSession();
-			//Map<String, Products> menu=(Map<String, Products>) session.getAttribute("menu");
+			Map<String, Products> menu=(Map<String, Products>) session.getAttribute("menu");
 
 			//（仮）Welcomeサーブレットを通さずmenu取得用
-			WelcomeMenuLogic wml=new WelcomeMenuLogic();
-			Map<String, Products> menu=wml.execute();
+//			WelcomeMenuLogic wml=new WelcomeMenuLogic();
+//			Map<String, Products> menu=wml.execute();
 
 			//---------------ガチャ用コード---------------------------------------------
 			//初期値設定
