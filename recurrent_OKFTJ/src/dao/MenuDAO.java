@@ -32,6 +32,7 @@ public class MenuDAO {
 			Map<String, Products> productsM = new HashMap<String, Products>();
 
 
+
 			// データベースへ接続
 			try (Connection conn = DriverManager.getConnection(
 					JDBC_URL, DB_USER, DB_PASS)) {
@@ -55,7 +56,7 @@ public class MenuDAO {
 						product.setCalorie(rs.getInt("CALORIE"));
 						product.setImage(rs.getString("IMAGE"));
 
-						setproducts.getProducts().add(product);
+						setproducts.setProducts(product);
 					}
 					productsM.put(key.get(i), setproducts);
 				}

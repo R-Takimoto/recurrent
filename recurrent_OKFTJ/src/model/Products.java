@@ -20,8 +20,8 @@ public class Products implements Serializable {
 		return products;
 	}
 
-	public void setProducts(ArrayList<Product> products) {
-		this.products = products;
+	public void setProducts(Product products) {
+		this.products.add(products) ;
 	}
 
 }

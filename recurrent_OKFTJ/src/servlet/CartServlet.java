@@ -13,6 +13,7 @@ import javax.servlet.http.HttpSession;
 import model.Order;
 import model.Orders;
 import model.Product;
+import model.Products;
 
 @WebServlet("/CartServlet")
 public class CartServlet extends HttpServlet {
@@ -133,8 +134,38 @@ public class CartServlet extends HttpServlet {
 
 			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/cart.jsp");
 			dispatcher.forward(request, response);
-		}
+		}else if(action.equals("gatyaCart")) {
+			//ガチャメニューをカートに入れる処理(折出)
+			HttpSession session = request.getSession();
+			Products gatyaMenu=(Products)session.getAttribute("gatyaMenu");
 
+			Orders orders = (Orders) session.getAttribute("orders");
+			if(orders == null) {
+				orders = new Orders();
+			}
+
+
+			for(int i=0;i<gatyaMenu.getProducts().size();i++) {
+				String typeCode = gatyaMenu.getProducts().get(i).getTypeCode();
+				String productName = gatyaMenu.getProducts().get(i).getProductName();
+				String image = gatyaMenu.getProducts().get(i).getImage();
+				int quantity = 1;
+				int price = gatyaMenu.getProducts().get(i).getPrice();
+				int calorie = gatyaMenu.getProducts().get(i).getCalorie();
+				int orderTypeId = 4;
+
+				Order order = new Order(typeCode, productName, image, quantity,price, calorie, orderTypeId);
+
+				orders.getOrders().add(order);
+
+				session.setAttribute("orders", orders);
+
+			}
+			session.removeAttribute("gatyaMenu");
+
+			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/top.jsp");
+			dispatcher.forward(request, response);
+		}
 	}
 
 }
