@@ -1,0 +1,65 @@
+@charset "utf-8";
+
+.ddd {
+	margin: 0 auto;
+}
+
+/* ---------ガチャ用---------- */
+#gatya h3{
+	margin-top:30px;
+	text-align:center;
+}
+#gatya h4{
+
+	text-align:center;
+}
+
+
+#gatya img{
+	width:80px;
+	height:142px;
+}
+
+#gatyaImage{
+	text-align:center;
+	margin-top:30px;
+	margin-bottom:30px;
+}
+
+#gatya p{
+	text-align:center
+}
+
+a#gatyaA{
+	border:none;
+	background : #5bc0de;     /* 背景色 */
+	color : #ffffff;     /* 文字色 */
+}
+
+#gatyaB a{
+	border:none;
+	background : #5bc0de;     /* 背景色 */
+	color : #ffffff;     /* 文字色 */
+}
+
+.gatyaC {
+	float:left;
+}
+
+#gatyaD{
+	margin:0 auto;
+}
+
+#gatyaResult input{
+	margin-left:10px;
+}
+
+table#gatyaTable {
+
+	margin-left: auto;
+    margin-right: auto;
+}
+
+table#gatyaTable th,td{
+	text-align: center;
+}

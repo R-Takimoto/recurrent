@@ -14,7 +14,7 @@
 			<li class="drawer-item"><a href="/recurrent/CartServlet">注文<br class="br">カート</a></li>
 			<li class="drawer-item"><a href="/recurrent/AssistServlet?orderTypeId=2">カロリー<br class="br">絞り込み</a></li>
 			<li class="drawer-item"><a href="/recurrent/AssistServlet?orderTypeId=3">価格<br class="br">絞り込み</a></li>
-			<li class="drawer-item"><a href="/recurrent/PlayServlet?orderTypeId=4">ガチャ<br class="br">注文</a></li>
+			<li class="drawer-item"><a href="/recurrent/PlayServlet">ガチャ<br class="br">注文</a></li>
 			<li class="drawer-item"><a href="/recurrent/SlipServlet">伝票</a></li>
 		</ul>
 	</nav>
