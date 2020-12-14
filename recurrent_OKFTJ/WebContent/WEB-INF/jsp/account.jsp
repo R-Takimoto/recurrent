@@ -7,8 +7,8 @@
 	<title>アカウント管理画面</title>
 </head>
 <body>
-	<!-- アカウント管理トップ画面移動ボタン＆トップ画面移動ボタン -->
-	<a href="/recurrent/AccountServlet">アカウント管理画面トップへ</a>
+	<!-- トップ画面移動ボタン -->
+
 	<form action="/recurrent/LoginServlet?action=toppage" method="post">
 		<input type="submit" value="トップへ戻る"/>
 	</form>
