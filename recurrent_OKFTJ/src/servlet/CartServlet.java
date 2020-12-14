@@ -13,6 +13,7 @@ import javax.servlet.http.HttpSession;
 import model.Order;
 import model.Orders;
 import model.Product;
+import model.Products;
 
 @WebServlet("/CartServlet")
 public class CartServlet extends HttpServlet {
@@ -62,7 +63,7 @@ public class CartServlet extends HttpServlet {
 		//action属性受け取り
 		request.setCharacterEncoding("utf-8");
 		String action = request.getParameter("action");
-		//action属性がnullの時メインメニュー画面へリダイレクト、action属性=alterの時カート数量変更/商品削除画面へフォワード
+		//action属性がnullの時メインメニュー画面へフォワード、action属性=alterの時カート数量変更/商品削除画面へフォワード
 		if (action == null) {
 			//通常メニューからカートに追加処理(滝本)
 			{
@@ -108,6 +109,68 @@ public class CartServlet extends HttpServlet {
 
 			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/cart.jsp");
 			dispatcher.forward(request, response);
+
+		}else if(action.equals("gatyaCart")) {
+			//ガチャメニューをカートに入れる処理(折出)
+			HttpSession session = request.getSession();
+			Products gatyaMenu=(Products)session.getAttribute("gatyaMenu");
+
+
+
+
+//			for(int i=0;i<gatyaMenu.getProducts().size();i++) {
+//				String typeCode = gatyaMenu.getProducts().get(i).getTypeCode();
+//				String productName = gatyaMenu.getProducts().get(i).getProductName();
+//				String image = gatyaMenu.getProducts().get(i).getImage();
+//				int quantity = 1;
+//				int price = gatyaMenu.getProducts().get(i).getPrice();
+//				int calorie = gatyaMenu.getProducts().get(i).getCalorie();
+//				int orderTypeId = 4;
+//
+//				System.out.println(typeCode);
+//				System.out.println(productName);
+//				System.out.println(image);
+//				System.out.println(quantity);
+//				System.out.println(price);
+//				System.out.println(calorie);
+//				System.out.println(orderTypeId);
+//				System.out.println("------------------------");
+//
+//			}
+
+
+			Orders orders = (Orders) session.getAttribute("orders");
+			if(orders == null) {
+				orders = new Orders();
+			}
+
+
+			for(int i=0;i<gatyaMenu.getProducts().size();i++) {
+				String typeCode = gatyaMenu.getProducts().get(i).getTypeCode();
+				String productName = gatyaMenu.getProducts().get(i).getProductName();
+				String image = gatyaMenu.getProducts().get(i).getImage();
+				int quantity = 1;
+				int price = gatyaMenu.getProducts().get(i).getPrice();
+				int calorie = gatyaMenu.getProducts().get(i).getCalorie();
+				int orderTypeId = 4;
+
+				Order order = new Order(typeCode, productName, image, quantity,price, calorie, orderTypeId);
+
+				orders.getOrders().add(order);
+
+				session.setAttribute("orders", orders);
+
+//				//テスト用空にする
+//				orders.getOrders().clear();
+
+
+			}
+			session.removeAttribute("gatyaMenu");
+
+			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/top.jsp");
+			dispatcher.forward(request, response);
+
+
 		}
 
 	}

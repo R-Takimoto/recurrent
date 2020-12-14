@@ -8,7 +8,9 @@
 	<title>注文確認画面</title>
 </head>
 <body>
-	<a href="/recurrent/LoginServlet">トップへ戻る</a>
+	<form action="/recurrent/LoginServlet?action=toppage" method="post">
+		<input type="submit" value="トップへ戻る"/>
+	</form>
 	<p>注文確認</p>
 	<p><c:out value="${seat}"/>番テーブル</p>
 

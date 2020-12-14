@@ -4,29 +4,15 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<title>管理トップ画面</title>
-<link rel="stylesheet" href="css/style.css">
-<link href="https://fonts.googleapis.com/earlyaccess/hannari.css"
-	rel="stylesheet">
-
+	<meta charset="UTF-8">
+	<title>管理トップ画面</title>
 </head>
-<body style="background-color: #c7eff0;">
-<div class="center">
-<div class="sampleBox">
+<body>
 	<p><c:out value="${store.storeName}"/>ログインしました</p>
-	<a href="/recurrent/ConfirmOrderServlet"><button type="button" class="red2button">注文管理</button></a>
-	<p></p>
-	<a href="/recurrent/SalesServlet?action=login"><button type="button" class="yellowbutton">売上管理</button></a>
-	<p></p>
-	<a href="/recurrent/AccountServlet?action=login"><button type="button" class="greenbutton">アカウント管理</button></a>
-	<p></p>
-	<a href="/recurrent/MenuServlet?action=login"><button type="button" class="bluebutton">メニュー管理</button></a>
-	<p></p>
-	<p></p>
-
-	<a href="/recurrent/ConfirmLoginServlet?action=login"><button type="button" class="logoutbutton">ログアウト</button></a>
-	</div>
-	</div>
+	<a href="/recurrent/ConfirmOrderServlet">注文管理</a>
+	<a href="/recurrent/SalesServlet?action=login">売上管理</a>
+	<a href="/recurrent/AccountServlet?action=login">アカウント管理</a>
+	<a href="/recurrent/ManagerMenuServlet?action=login">メニュー管理</a>
+	<a href="/recurrent/ConfirmLoginServlet?action=login">ログアウト</a>
 </body>
 </html>
