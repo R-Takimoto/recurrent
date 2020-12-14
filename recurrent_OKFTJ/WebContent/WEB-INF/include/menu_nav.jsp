@@ -2,12 +2,11 @@
     pageEncoding="UTF-8"%>
 
 <nav class="menuNav">
-	<ul class="nav nav-tabs">
-		<li class="nav-item"><a href="#photo1" class="nav-link" data-toggle="tab">セット</a></li>
-		<li class="nav-item"><a href="#photo2" class="nav-link" data-toggle="tab">和食</a></li>
-		<li class="nav-item"><a href="#photo3" class="nav-link"data-toggle="tab">洋食</a></li>
-		<li class="nav-item"><a href="#photo4" class="nav-link" data-toggle="tab">ドリンク</a></li>
-		<li class="nav-item"><a href="#photo5" class="nav-link" data-toggle="tab">デザート</a></li>
-		<li class="nav-item"><a href="#photo6" class="nav-link" data-toggle="tab">その他</a></li>
+	<ul class="nav global-nav">
+		<li class="nav-item current"><a href="/recurrent/WelcomeServlet?key=s" class="nav-link">セット</a></li>
+		<li class="nav-item"><a href="/recurrent/WelcomeServlet?key=w" class="nav-link">和食</a></li>
+		<li class="nav-item"><a href="/recurrent/WelcomeServlet?key=y" class="nav-link">洋食</a></li>
+		<li class="nav-item"><a href="/recurrent/WelcomeServlet?key=d" class="nav-link">ドリンク</a></li>
+		<li class="nav-item"><a href="/recurrent/WelcomeServlet?key=a" class="nav-link">その他</a></li>
 	</ul>
 </nav>

@@ -24,6 +24,7 @@ public class CartServlet extends HttpServlet {
 		//カート内数量変更用ページへフォワードする
 		{
 			String ordersNum = request.getParameter("ordersNum");
+			String delete = request.getParameter("delete");
 			if(!(ordersNum == null)) {
 				HttpSession session = request.getSession();
 				Orders orders = (Orders) session.getAttribute("orders");
@@ -45,9 +46,33 @@ public class CartServlet extends HttpServlet {
 				product.setImage(image);
 				request.setAttribute("product", product);
 				request.setAttribute("quantity", quantity);
+				String button = "数量変更";
+				String change = "change";
+				if(delete != null) {
+					button = "取消";
+					change = "delete";
+				}
 
+				session.setAttribute("ordersNum", ordersNum);
+
+				request.setAttribute("change", change);
+				request.setAttribute("product", product);
+				request.setAttribute("button", button);
 				//フォワード
 				RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/product.jsp?action=alter");
+				dispatcher.forward(request, response);
+			}
+		}
+
+		//カート内空の時用の処理
+		{
+			HttpSession session = request.getSession();
+			Orders orders = (Orders) session.getAttribute("orders");
+			if(orders == null ||  orders.getOrders().size() == 0) {
+				String nonOrders = "none";
+				request.setAttribute("nonOrders", nonOrders);
+				//フォワード
+				RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/cart.jsp");
 				dispatcher.forward(request, response);
 			}
 		}
@@ -88,23 +113,23 @@ public class CartServlet extends HttpServlet {
 
 			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/top.jsp");
 			dispatcher.forward(request, response);
-		} else if (action.equals("alter")) {
-			//数量変更の場合の、商品詳細画面の数量変更にフォワード（action属性渡す）
-			request.setAttribute("action", action);
-			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/product.jsp");
-			dispatcher.forward(request, response);
-		} else if (action.equals("confirm")) {
-			//数量変更の決定の場合の、注文カート画面の数量変更にフォワード（action属性渡す）
-			String quantityChange = request.getParameter("quantityChange");
-			String delate = request.getParameter("delate");
-			if (quantityChange != null) {
-				String quantity = request.getParameter("quantity");
-				System.out.println(quantity);
-			} else if (delate != null) {
-				String quantity = request.getParameter("quantity");
-				System.out.println(quantity);
+		} else if (action.equals("confirm")) {//数量変更 カート内削除
+			HttpSession session = request.getSession();
+			String delete = request.getParameter("delete");
+			String ordersNum = (String) session.getAttribute("ordersNum");
+			int quantity =  Integer.parseInt(request.getParameter("quantity"));
+			int index = Integer.parseInt(ordersNum);
+			Orders orders = (Orders) session.getAttribute("orders");
+			if(!(delete == null)) {
+				orders.getOrders().remove(index);
+				if(orders.getOrders().size() == 0 || orders == null) {
+					String nonOrders = "none";
+					request.setAttribute("nonOrders", nonOrders);
+				}
+				RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/cart.jsp");
+				dispatcher.forward(request, response);
 			}
-
+			orders.getOrders().get(index).setQuantity(quantity);
 
 			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/cart.jsp");
 			dispatcher.forward(request, response);

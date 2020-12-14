@@ -1,0 +1,190 @@
+@charset "utf-8";
+
+.nav-tabs {
+	border: none;
+}
+
+.nav-item a {
+	text-decoration: none;
+	color: #660000;
+}
+
+.br {
+	display: none;
+}
+
+.drawer {
+	width: 35px;
+	position: absolute;
+	top: 2px;
+	right: 22px;
+}
+.drawer-list {
+		list-style: none;
+		text-align: center;
+		padding: 0;
+		margin-top: 50px;
+	}
+
+.drawer-item {
+	width: 70%;
+	margin: 10px auto;
+}
+
+.drawer-item a {
+	position: relative;
+	display: block;
+	padding: 12px 0.5em;
+	margin: 40px 0;
+	text-decoration: none;
+	color: #fff;
+	background: #ffbf1f;/*色*/
+	border-radius: 4px;/*角の丸み*/
+	box-shadow: inset 0 2px 0 rgba(255,255,255,0.2), inset 0 -2px 0 rgba(0, 0, 0, 0.05);
+	font-weight: bold;
+	letter-spacing: 0.06em;
+	border: solid 2px #d27d00;/*線色*/
+}
+
+/* チェックボックスは非表示に */
+.drawer-hidden {
+	display: none;
+}
+
+/* ハンバーガーアイコンの設置スペース */
+.drawer-open {
+	display: flex;
+	height: 40px;
+	width: 40px;
+	justify-content: center;
+	align-items: center;
+	position: relative;
+	z-index: 100;/* 重なり順を一番上に */
+	cursor: pointer;
+}
+
+/* ハンバーガーメニューのアイコン */
+.drawer-open span,
+.drawer-open span:before,
+.drawer-open span:after {
+	content: '';
+	display: block;
+	height: 3px;
+	width: 25px;
+	border-radius: 3px;
+	background: #333;
+	transition: 0.5s;
+	position: absolute;
+}
+
+/* 三本線のうち一番上の棒の位置調整 */
+.drawer-open span:before {
+	bottom: 9px;
+}
+
+/* 三本線のうち一番下の棒の位置調整 */
+.drawer-open span:after {
+	top: 9px;
+}
+
+/* アイコンがクリックされたら真ん中の線を透明にする */
+#drawer-check:checked ~ .drawer-open span {
+	background: rgba(255, 255, 255, 0);
+}
+
+/* アイコンがクリックされたらアイコンが×印になように上下の線を回転 */
+#drawer-check:checked ~ .drawer-open span::before {
+	bottom: 0;
+	transform: rotate(45deg);
+}
+
+#drawer-check:checked ~ .drawer-open span::after {
+	top: 0;
+	transform: rotate(-45deg);
+}
+
+/* メニューのデザイン*/
+.drawer-content {
+	width: 100%;
+	height: 100%;
+	position: fixed;
+	top: 0;
+	left: 100%;/* メニューを画面の外に飛ばす */
+	z-index: 99;
+	background: #eee;
+	transition: .5s;
+	font-size: 2.2rem;
+}
+
+/* アイコンがクリックされたらメニューを表示 */
+#drawer-check:checked ~ .drawer-content {
+	left: 0;/* メニューを画面に入れる */
+}
+
+@media screen and (min-width: 769px) {
+	 .menuNav ul li:first-child {
+		margin-left: 20%;
+	}
+
+	.br {
+		display: inline;
+	}
+
+	.drawer {
+		position: static;
+		width: 20%;
+	}
+
+	.drawer-open {
+		display: none;
+	}
+
+	.drawer-content {
+		position: static;
+		font-size: 1.4rem;
+		background: #fff;
+	}
+
+	.drawer-list {
+		list-style: none;
+		text-align: center;
+		padding: 0;
+		margin-top: 1px;
+	}
+
+	.drawer-item {
+		width: 90%;
+		margin: 0 auto 30px;
+	}
+
+	.drawer-item a {
+		position: relative;
+		display: block;
+		margin: 0;
+		text-decoration: none;
+		color: #fff;
+		font-size: 2.0rem;
+		background: #ffbf1f;/*色*/
+		border-radius: 4px;/*角の丸み*/
+		box-shadow: inset 0 2px 0 rgba(255,255,255,0.2), inset 0 -2px 0 rgba(0, 0, 0, 0.05);
+		font-weight: bold;
+		letter-spacing: 0.06em;
+		border: solid 2px #d27d00;/*線色*/
+	}
+
+	.drawer-item a:hover {
+		color: #660000;
+		transition: 0.5s;
+	}
+
+	.nav-item a {
+		text-decoration: none;
+		color: #660000;
+		font-size: 2.0rem;
+		letter-spacing: 0.06em;
+	}
+	.main {
+		width: 80%;
+	}
+
+}

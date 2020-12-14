@@ -23,13 +23,13 @@ public class ProductServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("utf-8");
-		//受け取った商品情報を絞り込み、jspに返す
+		//受け取った商品情報を絞り込み、jspに返す(滝本)
 		{
 			String typeCode = request.getParameter("typeCode");
 			String key = request.getParameter("key");
-
 			HttpSession session = request.getSession();
 			Map<String, Products> menu = (Map<String, Products>) session.getAttribute("menu");
+
 			ArrayList<Product> list = menu.get(key).getProducts();
 
 			for(int i = 0; i < list.size(); i ++) {
@@ -41,12 +41,16 @@ public class ProductServlet extends HttpServlet {
 					product.setPrice(list.get(i).getPrice());
 					product.setCalorie(list.get(i).getCalorie());
 					product.setImage(list.get(i).getImage());
+
 					request.setAttribute("product", product);
 					break;
 				}
 			}
+			String button = "カートへ";
+			request.setAttribute("button", button);
 
 		}
+
 		RequestDispatcher dispatcher=request.getRequestDispatcher("/WEB-INF/jsp/product.jsp");
 		dispatcher.forward(request, response);
 	}
