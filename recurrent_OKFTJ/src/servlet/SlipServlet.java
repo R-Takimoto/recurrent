@@ -44,18 +44,15 @@ public class SlipServlet extends HttpServlet {
 			session.invalidate();
 			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/end.jsp");
 			dispatcher.forward(request, response);
-		}else {
+		}else if(action.equals("kaikei")){
 			Slips slips = (Slips) session.getAttribute("kaikei");
-			session.removeAttribute("kaikei");
 			Integer total = 0;
 			for(int i = 0; i < slips.getSlips().size(); i ++) {
 				total += slips.getSlips().get(i).getPrice();
 			}
-
 			request.setAttribute("total", total);
 			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/end.jsp");
 			dispatcher.forward(request, response);
-
 		}
 	}
 }

@@ -71,7 +71,7 @@ span {
 	}
 	.products-wrapper ul {
 		line-height: 40px;
-		margin: 0 0 0 60px;
+		margin: 30px 0 0 60px;
 		padding: 0 60px 0 0;
 		list-style: none;
 		display: flex;
@@ -90,16 +90,12 @@ span {
 	.products-wrapper ul li a {
 		display: inline-block;
 		width: 100%;
+		height: 100%;
 		color: #333; /* メニューの文字色 */
 		text-decoration: none;
-		position: static;
+		position: relative;
 	}
-	.products-wrapper ul li span {
-		position: static;
-		bottom: 5px;
-		left: 50%;
-		transform: translateX(-50%);
-	}
+
 	.products-wrapper ul li .s1 {
 	position: static;
 	bottom: 15px;
@@ -122,6 +118,7 @@ span {
 	img {
 		border: solid 1px #555;
 		border-radius: 5px;
+		margin: 0 auto;
 	}
 	span {
 	font-size: 1.8rem;

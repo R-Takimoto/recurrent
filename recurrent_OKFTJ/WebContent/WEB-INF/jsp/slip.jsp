@@ -38,7 +38,7 @@
 					</c:forEach>
 				</table>
 				<div class="c">
-					<p><a href="/recurrent/SlipServlet?action=kaikei" class="button">会計</a></p>
+					<p class="cc"><a href="/recurrent/SlipServlet?action=kaikei" class="button">会計</a></p>
 				</div>
 			</main>
 		</div>

@@ -129,4 +129,68 @@ public class OrderDAO {
 			    }
 			    return managerSlips;
 		  }
+
+		//(管理画面)売上確認--------------------------------------------------
+		  public ManagerSlips findBySalesMenu(String storeId,String typeCode,String fromDate,String toDate) {
+			  //初期値にnullをセット
+			  ManagerSlips managerSlips=null;
+
+			  // データベースへ接続
+			  try (Connection conn = DriverManager.getConnection(
+			      JDBC_URL, DB_USER, DB_PASS)) {
+				  // SQL文を準備
+			      String sql = "select orderdate,store_seatId,orders.typecode,productname,price,calorie,quantity,item,variety,ordertype\r\n" +
+			      		"from orders\r\n" +
+			      		"join product\r\n" +
+			      		"on orders.typecode=product.typecode\r\n" +
+			      		"join item_variety\r\n" +
+			      		"on product.item_varietyId=item_variety.item_varietyId\r\n" +
+			      		"join item\r\n" +
+			      		"on item_variety.itemId=item.itemId\r\n" +
+			      		"join variety\r\n" +
+			      		"on item_variety.varietyId=variety.varietyId\r\n" +
+			      		"join ordertype\r\n" +
+			      		"on orders.ordertypeId=ordertype.ordertypeId\r\n" +
+			      		"join orderid\r\n" +
+			      		"on orders.orderId=orderid.orderId\r\n" +
+			      		"where store_seatId like ? \r\n" +
+			      		"and orders.typecode like ? \r\n" +
+			      		"and orderdate between ? and ? ";
+			      PreparedStatement pStmt = conn.prepareStatement(sql);
+
+			      pStmt.setString(1,storeId);
+			      pStmt.setString(2,typeCode);
+			      pStmt.setString(3,fromDate);
+			      pStmt.setString(4,toDate);
+			      //リザルト
+			      ResultSet rs = pStmt.executeQuery();
+
+			      //表全てをManagerSlipsクラスに格納（NullでなければManagerSlipsクラスをnewする）
+		    	  while(rs.next()){
+		    		  if(managerSlips==null) {
+		    			  managerSlips = new ManagerSlips();
+		    		  }
+		    		  String orderDate=rs.getString("orderdate");
+			    	  String productName = rs.getString("productname");
+			    	  int price = rs.getInt("price");
+			    	  int calorie = rs.getInt("calorie");
+			    	  int quantity = rs.getInt("quantity");
+			    	  String item=rs.getNString("item");
+			    	  String variety=rs.getString("variety");
+			    	  String ordertype=rs.getString("ordertype");
+
+
+			    	  ManagerSlip managerSlip=new ManagerSlip(orderDate,productName,price,calorie,quantity,item,variety,ordertype);
+
+
+			    	  managerSlips.getManagerSlips().add(managerSlip);
+
+				  }
+			    } catch (SQLException e) {
+			      e.printStackTrace();
+			      return null;
+
+			    }
+			    return managerSlips;
+		  }
 }

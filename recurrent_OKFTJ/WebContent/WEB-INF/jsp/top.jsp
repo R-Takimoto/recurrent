@@ -27,10 +27,10 @@
 							<li class="product-wrapper">
 								<a href="/recurrent/ProductServlet?typeCode=${list.typeCode}&key=${key}">
 									<img src="images/${list.image}" class="img" alt="${list.productName}" />
-									<span class="s1"><c:out value="${list.productName}"/></span>
-									<span class="s2"><c:out value="${list.price}"/>円</span>
-									<span class="s3"><c:out value="${list.calorie}"/>カロリー</span>
 								</a>
+								<span class="s1"><c:out value="${list.productName}"/></span>
+								<span class="s2"><c:out value="${list.price}"/>円</span>
+								<span class="s3"><c:out value="${list.calorie}"/>カロリー</span>
 							</li>
 						</c:forEach>
 					</ul>

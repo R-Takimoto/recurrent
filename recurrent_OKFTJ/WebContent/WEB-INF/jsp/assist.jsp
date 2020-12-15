@@ -10,6 +10,7 @@
 	<%@ include file="../include/include_meta.jsp" %>
 	<title>絞り込み検索画面</title>
 	<jsp:include page="../include/include_css.jsp" />
+	<link rel="stylesheet" href="css/assist.css">
 </head>
 
 <body>
@@ -47,13 +48,13 @@
 				</div>
 				<input type="submit" value="絞り込み" />
 				</form>
-				<a href="/recurrent/EnergyServlet">推定エネルギー量を計算する</a>
+				<p class="a"><a href="/recurrent/EnergyServlet">推定エネルギー量を計算する</a></p>
 			</c:if>
 			<!-- カロリー絞り込みここまで -->
 
 			<!-- 価格絞り込み画面 -->
 			<c:if test="${orderTypeId=='3'}">
-				<h1>価格を設定してメニューを絞り込みます</h1>
+				<h2>価格を設定してメニューを絞り込みます</h2>
 				<p>ご希望の価格を選択してください</p>
 				<form action="/recurrent/AssistServlet" method="post">
 					<div>

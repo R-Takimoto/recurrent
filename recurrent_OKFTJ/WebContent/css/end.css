@@ -1,0 +1,23 @@
+@charset "utf-8";
+
+
+
+.outer{
+  position: relative;
+}
+.inner{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translateY(150%) translateX(-50%);
+}
+
+h3 {
+	font-size: 1.6rem;
+	margin: 30px 0;
+}
+
+p {
+	font-size: 1.4rem;
+	text-align: center;
+}
