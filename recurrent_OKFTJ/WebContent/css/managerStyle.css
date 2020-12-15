@@ -1,0 +1,105 @@
+@charset "utf-8";
+
+
+html {
+
+}
+
+body {
+	max-width: 800px;
+	font-family: 'Avenir','Helvetica Neue','Helvetica','Arial','Hiragino Sans',YuGothic,'Yu Gothic','メイリオ', Meiryo,'ＭＳ Ｐゴシック','MS PGothic';
+	box-sizing: border-box;
+	background-color: #f8f8ff;
+	margin-bottom:5px;
+
+}
+
+.wrapper{
+	margin:10px 30px;
+
+}
+.topbutton {
+	position:relative;
+
+}
+
+.topbutton .rightbutton{
+	position:absolute;
+	right:0;
+
+}
+.space {
+	height:10px;
+
+}
+
+h2{
+	border-bottom:3px dotted #3f5170;
+	margin-top:10px;
+}
+p{
+	font-size:1em;
+}
+
+.dbtable{
+	border-collapse: collapse;
+	background-color:#ffffff;
+	margin-bottom:20px;
+}
+
+.dbtable th,td{
+	text-align:center;
+	font-size:1.5em;
+	padding:5px;
+}
+
+table#totalprice{
+	text-align:center;
+}
+
+#totalprice td{
+	text-align:center;
+	font-size:3em;
+	padding:5px;
+}
+
+.dbtable a:hover{
+	background-color:#ffd700;
+}
+
+.buttontable{
+	border-collapse: collapse;
+}
+
+.buttontable td{
+	margin:10px;
+}
+
+.menuupdatetable{
+	border-collapse: collapse;
+	background-color:#ffffff;
+}
+
+.menuupdatetable th,td{
+	text-align:center;
+}
+label {
+	font-size:1.5em;
+}
+
+.bottombutton {
+	position:relative;
+
+
+}
+
+.bottombutton .rightbutton{
+	position:absolute;
+	right:0;
+
+}
+.bottombutton .leftbutton{
+	position:absolute;
+	left:0;
+
+}
